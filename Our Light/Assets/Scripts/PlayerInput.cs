@@ -43,7 +43,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""id"": ""b879cd2b-b370-4fab-8c59-cc8acbe48777"",
                     ""path"": ""3DVector"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""NormalizeVector3"",
                     ""groups"": """",
                     ""action"": ""Move"",
                     ""isComposite"": true,
