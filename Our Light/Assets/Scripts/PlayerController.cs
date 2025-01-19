@@ -32,9 +32,9 @@ public class PlayerController : MonoBehaviour
         Vector3 inputVector = inputValue.Get<Vector3>();
         playerVelocity.x = inputVector.z * moveSpeed;
         playerVelocity.z = -inputVector.x * moveSpeed;
-        if(playerVelocity != Vector3.zero)
+        if(inputVector != Vector3.zero)
         {
-            transform.rotation = Quaternion.LookRotation(new Vector3(-playerVelocity.z, 0, playerVelocity.x));
+            transform.rotation = Quaternion.LookRotation(inputVector);
         }
     }
 
