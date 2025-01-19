@@ -32,7 +32,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""type"": ""Value"",
                     ""id"": ""c321bbf0-ff78-4847-bb18-354e6a39fc94"",
                     ""expectedControlType"": ""Vector3"",
-                    ""processors"": """",
+                    ""processors"": ""NormalizeVector3"",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 }
@@ -43,7 +43,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""id"": ""b879cd2b-b370-4fab-8c59-cc8acbe48777"",
                     ""path"": ""3DVector"",
                     ""interactions"": """",
-                    ""processors"": ""NormalizeVector3"",
+                    ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Move"",
                     ""isComposite"": true,
