@@ -13,6 +13,15 @@
                     "processors": "NormalizeVector3",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "UseLight",
+                    "type": "Button",
+                    "id": "d25e3d83-d1a3-4713-ae10-3ee3de469028",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -70,6 +79,17 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "e579dc31-6ef6-4752-84be-aa5fa0c8364c",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UseLight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

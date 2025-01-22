@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// Handles the player's light and its functionality
@@ -7,6 +8,10 @@ public class PlayerLight : MonoBehaviour
 {
 
     private int subdivisionCount = 30;
+    private PlayerInput playerInput;
+    private MeshCollider coneCollider;
+    private bool isLightOn;
+
     [SerializeField] private float angle;
     [SerializeField] private float distance;
     
@@ -15,6 +20,9 @@ public class PlayerLight : MonoBehaviour
     /// </summary>
     void Start()
     {
+        playerInput = new PlayerInput();
+        isLightOn = false;
+        coneCollider = GetComponent<MeshCollider>();
         Mesh lightColliderMesh = new Mesh();
         GetComponent<MeshFilter>().mesh = lightColliderMesh;
         transform.rotation = Quaternion.Euler(new Vector3(90f, -angle / 2, 0));
@@ -45,7 +53,22 @@ public class PlayerLight : MonoBehaviour
         lightColliderMesh.vertices = vertices;
         lightColliderMesh.uv = uvs;
         lightColliderMesh.triangles = triangles;
-        GetComponent<MeshCollider>().sharedMesh = lightColliderMesh;
+        coneCollider.sharedMesh = lightColliderMesh;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!isLightOn) return;
+        Debug.Log(other.name);
+
+    }
+
+    /// <summary>
+    /// Toggles the player's light
+    /// </summary>
+    private void OnUseLight()
+    {
+        isLightOn = !isLightOn;
     }
 
     // Update is called once per frame
