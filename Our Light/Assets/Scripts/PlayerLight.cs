@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.InputSystem;
 
 /// <summary>
@@ -11,10 +12,11 @@ public class PlayerLight : MonoBehaviour
     private PlayerInput playerInput;
     private MeshCollider coneCollider;
     private bool isLightOn;
+    private Light visualLight;
 
     [SerializeField] private float angle;
     [SerializeField] private float distance;
-    
+
     /// <summary>
     /// Creates the cone mesh that serves as the light's collision
     /// </summary>
@@ -23,6 +25,9 @@ public class PlayerLight : MonoBehaviour
         playerInput = new PlayerInput();
         isLightOn = false;
         coneCollider = GetComponent<MeshCollider>();
+        setupVisualLight();
+
+
         Mesh lightColliderMesh = new Mesh();
         GetComponent<MeshFilter>().mesh = lightColliderMesh;
         transform.rotation = Quaternion.Euler(new Vector3(90f, -angle / 2, 0));
@@ -54,6 +59,15 @@ public class PlayerLight : MonoBehaviour
         lightColliderMesh.uv = uvs;
         lightColliderMesh.triangles = triangles;
         coneCollider.sharedMesh = lightColliderMesh;
+    }
+
+    private void setupVisualLight()
+    {
+        visualLight = gameObject.transform.GetChild(0).gameObject.GetComponent<Light>();
+        visualLight.range = distance;
+        visualLight.spotAngle = angle;
+        visualLight.innerSpotAngle = angle;
+        visualLight.transform.rotation = Quaternion.Euler(new Vector3(90f, -angle / 2, 90f));
     }
 
     private void OnTriggerEnter(Collider other)
