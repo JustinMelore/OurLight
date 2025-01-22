@@ -25,9 +25,12 @@ public class PlayerLight : MonoBehaviour
         playerInput = new PlayerInput();
         isLightOn = false;
         coneCollider = GetComponent<MeshCollider>();
-        setupVisualLight();
+        SetupVisualLight();
+        GenerateColliderMesh();
+    }
 
-
+    private void GenerateColliderMesh()
+    {
         Mesh lightColliderMesh = new Mesh();
         GetComponent<MeshFilter>().mesh = lightColliderMesh;
         transform.rotation = Quaternion.Euler(new Vector3(90f, -angle / 2, 0));
@@ -43,9 +46,9 @@ public class PlayerLight : MonoBehaviour
         {
             float angleRad = currentAngle * (Mathf.PI / 180f);
             Vector3 vertex = new Vector3(Mathf.Cos(angleRad), Mathf.Sin(angleRad)) * distance;
-            vertices[i+1] = vertex;
+            vertices[i + 1] = vertex;
 
-            if(i > 0)
+            if (i > 0)
             {
                 triangles[i * 3 - 3] = 0;
                 triangles[i * 3 - 2] = i;
@@ -61,7 +64,7 @@ public class PlayerLight : MonoBehaviour
         coneCollider.sharedMesh = lightColliderMesh;
     }
 
-    private void setupVisualLight()
+    private void SetupVisualLight()
     {
         visualLight = gameObject.transform.GetChild(0).gameObject.GetComponent<Light>();
         visualLight.range = distance;
@@ -84,7 +87,7 @@ public class PlayerLight : MonoBehaviour
     {
         isLightOn = !isLightOn;
         coneCollider.enabled = isLightOn;
-        
+        visualLight.enabled = isLightOn;
     }
 
     // Update is called once per frame
