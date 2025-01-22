@@ -69,6 +69,8 @@ public class PlayerLight : MonoBehaviour
     private void OnUseLight()
     {
         isLightOn = !isLightOn;
+        coneCollider.enabled = isLightOn;
+        
     }
 
     // Update is called once per frame
