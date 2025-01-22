@@ -67,7 +67,7 @@ public class PlayerLight : MonoBehaviour
         visualLight.range = distance;
         visualLight.spotAngle = angle;
         visualLight.innerSpotAngle = angle;
-        visualLight.transform.rotation = Quaternion.Euler(new Vector3(90f, -angle / 2, 90f));
+        visualLight.transform.rotation = Quaternion.Euler(new Vector3(0f, angle * 1.5f, 0f));
     }
 
     private void OnTriggerEnter(Collider other)
