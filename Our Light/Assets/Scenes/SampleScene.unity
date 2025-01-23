@@ -2652,7 +2652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b22139145c8bd84295618aa468c3c11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  angle: 45
+  angle: 60
   distance: 7
 --- !u!64 &840773597
 MeshCollider:
