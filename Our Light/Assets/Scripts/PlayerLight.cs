@@ -66,11 +66,10 @@ public class PlayerLight : MonoBehaviour
 
     private void SetupVisualLight()
     {
-        visualLight = gameObject.transform.GetChild(0).gameObject.GetComponent<Light>();
-        visualLight.range = distance;
+        visualLight = GameObject.FindGameObjectWithTag("VisibleLight").GetComponent<Light>();
+        visualLight.range = distance + distance / 5;
         visualLight.spotAngle = angle;
         visualLight.innerSpotAngle = angle;
-        visualLight.transform.rotation = Quaternion.Euler(new Vector3(0f, angle * 1.5f, 0f));
     }
 
     private void OnTriggerEnter(Collider other)

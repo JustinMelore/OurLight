@@ -1617,7 +1617,7 @@ GameObject:
   - component: {fileID: 587152991}
   m_Layer: 0
   m_Name: Spot Light
-  m_TagString: Untagged
+  m_TagString: VisibleLight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1630,12 +1630,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 587152989}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: -0, z: -1.055}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 840773593}
+  m_Father: {fileID: 2023858991}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &587152991
 MonoBehaviour:
@@ -2084,7 +2084,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -2610,7 +2610,6 @@ GameObject:
   - component: {fileID: 840773595}
   - component: {fileID: 840773597}
   - component: {fileID: 840773598}
-  - component: {fileID: 840773599}
   m_Layer: 9
   m_Name: Light
   m_TagString: Untagged
@@ -2630,8 +2629,7 @@ Transform:
   m_LocalPosition: {x: 0.35, y: -0.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 587152990}
+  m_Children: []
   m_Father: {fileID: 2023858991}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &840773595
@@ -2654,8 +2652,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b22139145c8bd84295618aa468c3c11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  angle: 90
-  distance: 5
+  angle: 45
+  distance: 7
 --- !u!64 &840773597
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2671,11 +2669,11 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 759
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 0
   serializedVersion: 5
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
 --- !u!114 &840773598
@@ -2708,51 +2706,6 @@ MonoBehaviour:
   m_DefaultActionMap: Movement
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!23 &840773599
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 840773592}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &869419060
 GameObject:
   m_ObjectHideFlags: 0
@@ -5174,6 +5127,7 @@ Transform:
   - {fileID: 902401880}
   - {fileID: 1578739756}
   - {fileID: 840773593}
+  - {fileID: 587152990}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &2023858992
