@@ -2,6 +2,9 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+/// <summary>
+/// Handles general behavior for "lightable" objects (objects that can be revealed via the player's light)
+/// </summary>
 public class Lightable : MonoBehaviour
 {
     protected bool isLighted;
@@ -20,7 +23,6 @@ public class Lightable : MonoBehaviour
     protected List<GameObject> revealable;
     protected Collider lightCollider;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         isLighted = false;
@@ -54,7 +56,6 @@ public class Lightable : MonoBehaviour
         currentZoom = playerCamera.orthographicSize;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(lightCollider != null && !lightCollider.enabled)
@@ -86,6 +87,9 @@ public class Lightable : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Returns the player's camera to its original orthographic size
+    /// </summary>
     protected void zoomCameraOut()
     {
         
