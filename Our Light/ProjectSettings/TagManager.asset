@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - VisibleLight
+  - LightDetector
+  - Revealable
   layers:
   - Default
   - TransparentFX

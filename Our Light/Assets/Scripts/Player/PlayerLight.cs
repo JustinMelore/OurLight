@@ -72,13 +72,6 @@ public class PlayerLight : MonoBehaviour
         visualLight.innerSpotAngle = angle;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (!isLightOn) return;
-        Debug.Log(other.name);
-
-    }
-
     /// <summary>
     /// Toggles the player's light
     /// </summary>
