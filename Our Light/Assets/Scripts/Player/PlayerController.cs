@@ -10,9 +10,12 @@ public class PlayerController : MonoBehaviour
 {
     private PlayerInput playerInput;
     private CharacterController characterController;
+    private GameManager gameManager;
 
     private float gravity = -9.81f;
     private float moveSpeed = 5f;
+    private float deathHeight = -5f;
+
     private Vector3 playerVelocity;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -21,6 +24,7 @@ public class PlayerController : MonoBehaviour
         playerInput = new PlayerInput();
         characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
+        gameManager = FindFirstObjectByType<GameManager>();
     }
 
     /// <summary>
@@ -44,5 +48,6 @@ public class PlayerController : MonoBehaviour
         if (characterController.isGrounded && playerVelocity.y < 0) playerVelocity.y = -2f;
         playerVelocity.y += gravity * Time.deltaTime;
         characterController.Move(playerVelocity * Time.deltaTime);
+        if (transform.position.y <= deathHeight) gameManager.KillPlayer();
     }
 }

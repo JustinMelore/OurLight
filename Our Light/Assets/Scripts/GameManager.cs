@@ -6,6 +6,15 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class GameManager : MonoBehaviour
 {
+    //WILL EVENTUALLY INCLUDE CODE FOR A DEATH SCREEN
+    /// <summary>
+    /// Handles the player's death
+    /// </summary>
+    public void KillPlayer()
+    {
+        Debug.Log("YOU DIED");
+        RestartLevel();
+    }
 
     /// <summary>
     /// Restarts the current level

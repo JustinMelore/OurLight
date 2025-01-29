@@ -6,15 +6,15 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
 
-    private GameObject player;
+    private Transform player;
 
     void Start()
     {
-        player = GameObject.Find("Player");
+        player = GameObject.Find("Player").transform;
     }
 
     void Update()
     {
-        transform.position = player.transform.position;
+        transform.position = player.position;
     }
 }
