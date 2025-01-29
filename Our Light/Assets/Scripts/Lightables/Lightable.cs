@@ -10,6 +10,7 @@ public class Lightable : MonoBehaviour
     protected bool isLighted;
     protected float currentLightedTime;
     [SerializeField] protected float requiredTime;
+    [SerializeField] protected int lightCost;
 
     protected float currentCameraZoomOutTime;
     [SerializeField] protected float cameraZoomOutDuration;
@@ -22,6 +23,8 @@ public class Lightable : MonoBehaviour
     protected List<Collider> lightDetectors;
     protected List<GameObject> revealable;
     protected Collider lightCollider;
+
+    protected PlayerLight playerLight;
 
     void Start()
     {
@@ -41,6 +44,7 @@ public class Lightable : MonoBehaviour
             if (child.tag == "LightDetector") lightDetectors.Add(child.GetComponent<Collider>());
             else if (child.tag == "Revealable") revealable.Add(child.GameObject());
         }
+        playerLight = FindFirstObjectByType<PlayerLight>();
     }
 
     protected void OnTriggerEnter(Collider other)
@@ -78,6 +82,7 @@ public class Lightable : MonoBehaviour
                 }
                 isLighted = false;
                 currentZoom = finalZoom;
+                playerLight.AddLightStack(lightCost);
             }
         }
         else if(currentZoom != originalZoom)
