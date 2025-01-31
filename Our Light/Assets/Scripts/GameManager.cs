@@ -13,13 +13,13 @@ public class GameManager : MonoBehaviour
     public void KillPlayer()
     {
         Debug.Log("YOU DIED");
-        RestartLevel();
+        Respawn();
     }
 
     /// <summary>
     /// Restarts the current level
     /// </summary>
-    public void RestartLevel()
+    public void Respawn()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

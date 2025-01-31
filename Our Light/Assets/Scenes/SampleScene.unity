@@ -2518,7 +2518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   angle: 60
   distance: 7
-  lightStackMax: 5
+  lightStackMax: 10
 --- !u!64 &840773597
 MeshCollider:
   m_ObjectHideFlags: 0
