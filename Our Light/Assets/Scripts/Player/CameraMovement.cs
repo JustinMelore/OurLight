@@ -10,11 +10,11 @@ public class CameraMovement : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.Find("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()
     {
-        transform.position = player.position;
+        if(player.position.y > -2) transform.position = player.position;
     }
 }

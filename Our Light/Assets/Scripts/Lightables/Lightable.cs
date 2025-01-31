@@ -73,14 +73,7 @@ public class Lightable : MonoBehaviour
             playerCamera.orthographicSize = Mathf.Lerp(originalZoom, finalZoom, currentLightedTime / requiredTime);
             if (currentLightedTime >= requiredTime)
             {
-                foreach (Collider lightDetector in lightDetectors)
-                    lightDetector.enabled = false;
-                foreach (GameObject revealed in revealable)
-                {
-                    revealed.GetComponent<Collider>().enabled = true;
-                    revealed.GetComponent<MeshRenderer>().enabled = true;
-                }
-                isLighted = false;
+                ChangeLightableState(true);
                 currentZoom = finalZoom;
                 playerLight.AddLightStack(lightCost);
             }
@@ -90,6 +83,19 @@ public class Lightable : MonoBehaviour
             currentCameraZoomOutTime += Time.deltaTime;
             zoomCameraOut();
         }
+    }
+
+
+    public void ChangeLightableState(bool isRevealed)
+    {
+        foreach (Collider lightDetector in lightDetectors)
+            lightDetector.enabled = !isRevealed;
+        foreach (GameObject revealed in revealable)
+        {
+            revealed.GetComponent<Collider>().enabled = isRevealed;
+            revealed.GetComponent<MeshRenderer>().enabled = isRevealed;
+        }
+        isLighted = false;
     }
 
     /// <summary>

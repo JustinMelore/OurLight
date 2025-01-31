@@ -6,6 +6,17 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class GameManager : MonoBehaviour
 {
+    private RespawnManager respawnManager;
+    private CameraMovement mainCamera;
+    private GameObject player;
+
+    private void Start()
+    {
+        respawnManager = FindFirstObjectByType<RespawnManager>();
+        mainCamera = FindFirstObjectByType<CameraMovement>();
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
+
     //WILL EVENTUALLY INCLUDE CODE FOR A DEATH SCREEN
     /// <summary>
     /// Handles the player's death
@@ -13,6 +24,7 @@ public class GameManager : MonoBehaviour
     public void KillPlayer()
     {
         Debug.Log("YOU DIED");
+        player.GetComponent<PlayerController>().enabled = false;
         Respawn();
     }
 
@@ -21,7 +33,10 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void Respawn()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Debug.Log(respawnManager.GetRespawnPoint());
+        player.GetComponent<PlayerController>().RevivePlayer();
+        //player.GetComponent<PlayerController>().enabled = true;
+        
     }
 
 }

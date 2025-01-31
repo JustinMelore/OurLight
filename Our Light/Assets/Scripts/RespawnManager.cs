@@ -21,6 +21,11 @@ public class RespawnManager : MonoBehaviour
         this.respawnPoint = respawnPoint;
     }
 
+    public Vector3 GetRespawnPoint()
+    {
+        return respawnPoint;
+    }
+
     public void AddUnsavedLightable(Lightable unsavedLightable)
     {
         currentlyLit.Add(unsavedLightable);
@@ -33,6 +38,6 @@ public class RespawnManager : MonoBehaviour
 
     public void ResetUnsavedLightables()
     {
-        //PLACEHOLDER
+        foreach (Lightable lightable in currentlyLit) lightable.ChangeLightableState(false);
     }
 }
