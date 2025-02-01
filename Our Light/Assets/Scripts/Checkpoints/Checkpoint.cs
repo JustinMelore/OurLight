@@ -14,7 +14,7 @@ public class Checkpoint : MonoBehaviour
         used = false;
         respawnManager = FindFirstObjectByType<RespawnManager>();
         respawnPoint = transform.GetChild(0).transform.position;
-        light = FindFirstObjectByType<PlayerLight>();
+        playerLight = FindFirstObjectByType<PlayerLight>();
     }
 
     private void OnTriggerEnter(UnityEngine.Collider other)
