@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,13 +9,15 @@ public class GameManager : MonoBehaviour
 {
     private RespawnManager respawnManager;
     private CameraMovement mainCamera;
-    private GameObject player;
+    private PlayerController player;
+    private PlayerLight playerLight;
 
     private void Start()
     {
         respawnManager = FindFirstObjectByType<RespawnManager>();
         mainCamera = FindFirstObjectByType<CameraMovement>();
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        playerLight = player.gameObject.transform.GetComponentInChildren<PlayerLight>();
     }
 
     //WILL EVENTUALLY INCLUDE CODE FOR A DEATH SCREEN
@@ -23,8 +26,8 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void KillPlayer()
     {
-        Debug.Log("YOU DIED");
-        player.GetComponent<PlayerController>().enabled = false;
+        player.enabled = false;
+        playerLight.enabled = false;
         Respawn();
     }
 
@@ -33,10 +36,10 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void Respawn()
     {
-        Debug.Log(respawnManager.GetRespawnPoint());
-        player.GetComponent<PlayerController>().RevivePlayer();
-        //player.GetComponent<PlayerController>().enabled = true;
-        
+        player.RevivePlayer();
+        playerLight.ResetLight();
+        player.enabled = true;
+        playerLight.enabled = true;
     }
 
 }

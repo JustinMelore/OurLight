@@ -90,6 +90,15 @@ public class PlayerLight : MonoBehaviour
         coneCollider.enabled = isLightOn;
         visualLight.enabled = isLightOn;
     }
+
+    /// <summary>
+    /// Disables the light and resets it back to its max stacks
+    /// </summary>
+    public void ResetLight()
+    {
+        if (isLightOn) OnUseLight();
+        AddLightStack(lightStackMax);
+    }
     
     /// <summary>
     /// Adds the given value to the number of light stacks
@@ -98,8 +107,8 @@ public class PlayerLight : MonoBehaviour
     public void AddLightStack(int stackChange)
     {
         lightStacks += stackChange;
-        Debug.Log("Light stack amount: " + lightStacks);
         if(lightStacks > lightStackMax) lightStacks = lightStackMax;
         else if(lightStacks <= 0) gameManager.KillPlayer();
+        Debug.Log("Light stack amount: " + lightStacks);
     }
 }

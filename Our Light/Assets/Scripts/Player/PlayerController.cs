@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
     private float gravity = -9.81f;
     private float moveSpeed = 5f;
     private float deathHeight = -5f;
-    private bool isAlive;
 
     private Vector3 playerVelocity;
 
@@ -26,7 +25,6 @@ public class PlayerController : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         gameManager = FindFirstObjectByType<GameManager>();
-        isAlive = true;
     }
 
     /// <summary>
@@ -50,16 +48,14 @@ public class PlayerController : MonoBehaviour
         if (characterController.isGrounded && playerVelocity.y < 0) playerVelocity.y = -2f;
         playerVelocity.y += gravity * Time.deltaTime;
         characterController.Move(playerVelocity * Time.deltaTime);
-        if (transform.position.y <= deathHeight && isAlive)
+        if (transform.position.y <= deathHeight)
         {
             gameManager.KillPlayer();
-            isAlive = false;
         }
     }
 
     public void RevivePlayer()
     {
         transform.position = FindFirstObjectByType<RespawnManager>().GetRespawnPoint();
-        this.isAlive = true;
     }
 }
