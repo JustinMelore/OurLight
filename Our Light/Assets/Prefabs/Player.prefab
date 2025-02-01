@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 2606452755931884048}
   - component: {fileID: 3135389211852453548}
   - component: {fileID: 3893777283422617076}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerDirection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 2989475629596740260}
   - component: {fileID: 5194505698483734697}
   - component: {fileID: 8246031636909090518}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -312,7 +312,7 @@ GameObject:
   - component: {fileID: 1676396033140451628}
   - component: {fileID: 6642853431450251784}
   - component: {fileID: 3266031586204362339}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Spot Light
   m_TagString: VisibleLight
   m_Icon: {fileID: 0}
