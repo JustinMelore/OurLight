@@ -5,6 +5,7 @@ public class Checkpoint : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private RespawnManager respawnManager;
     private Vector3 respawnPoint;
+    private PlayerLight playerLight;
 
     private bool used;
 
@@ -13,6 +14,7 @@ public class Checkpoint : MonoBehaviour
         used = false;
         respawnManager = FindFirstObjectByType<RespawnManager>();
         respawnPoint = transform.GetChild(0).transform.position;
+        light = FindFirstObjectByType<PlayerLight>();
     }
 
     private void OnTriggerEnter(UnityEngine.Collider other)
@@ -22,6 +24,7 @@ public class Checkpoint : MonoBehaviour
             Debug.Log("Checkpoint reached");
             respawnManager.SetRespawnPoint(respawnPoint);
             respawnManager.ClearUnsavedLightables();
+            playerLight.ResetLight();
             used = true;
         }
     }
