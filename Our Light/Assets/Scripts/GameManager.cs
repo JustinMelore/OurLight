@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
     {
         player.RevivePlayer();
         playerLight.ResetLight();
+        respawnManager.ResetUnsavedLightables();
         player.enabled = true;
         playerLight.enabled = true;
     }

@@ -25,6 +25,7 @@ public class Lightable : MonoBehaviour
     protected Collider lightCollider;
 
     protected PlayerLight playerLight;
+    protected RespawnManager respawnManager;
 
     void Start()
     {
@@ -45,6 +46,7 @@ public class Lightable : MonoBehaviour
             else if (child.tag == "Revealable") revealable.Add(child.GameObject());
         }
         playerLight = FindFirstObjectByType<PlayerLight>();
+        respawnManager = FindFirstObjectByType<RespawnManager>();
     }
 
     protected void OnTriggerEnter(Collider other)
@@ -88,6 +90,7 @@ public class Lightable : MonoBehaviour
 
     public void ChangeLightableState(bool isRevealed)
     {
+        if (isRevealed) respawnManager.AddUnsavedLightable(this);
         foreach (Collider lightDetector in lightDetectors)
             lightDetector.enabled = !isRevealed;
         foreach (GameObject revealed in revealable)

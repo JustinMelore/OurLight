@@ -7,12 +7,12 @@ using UnityEngine;
 /// </summary>
 public class RespawnManager : MonoBehaviour
 {
-    private List<Lightable> currentlyLit;
+    private HashSet<Lightable> currentlyLit;
     private Vector3 respawnPoint;
 
     private void Start()
     {
-        currentlyLit = new List<Lightable>();
+        currentlyLit = new HashSet<Lightable>();
         respawnPoint = GameObject.FindGameObjectWithTag("Player").transform.position;
     }
 
