@@ -20,11 +20,13 @@ public class PlayerLight : MonoBehaviour
     [SerializeField] private int lightStackMax;
 
     GameManager gameManager;
+    LightIndicator lightUI;
 
     void Start()
     {
         playerInput = new PlayerInput();
         gameManager = FindFirstObjectByType<GameManager>();
+        lightUI = FindFirstObjectByType<LightIndicator>();
         isLightOn = false;
         lightStacks = lightStackMax;
         coneCollider = GetComponent<MeshCollider>();
@@ -109,6 +111,7 @@ public class PlayerLight : MonoBehaviour
         lightStacks += stackChange;
         if(lightStacks > lightStackMax) lightStacks = lightStackMax;
         else if(lightStacks <= 0) gameManager.KillPlayer();
+        lightUI.SetLightAmount(lightStacks);
         Debug.Log("Light stack amount: " + lightStacks);
     }
 }
