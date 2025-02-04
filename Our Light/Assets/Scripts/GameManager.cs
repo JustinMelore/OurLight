@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,22 +7,40 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class GameManager : MonoBehaviour
 {
+    private RespawnManager respawnManager;
+    private CameraMovement mainCamera;
+    private PlayerController player;
+    private PlayerLight playerLight;
+
+    private void Start()
+    {
+        respawnManager = FindFirstObjectByType<RespawnManager>();
+        mainCamera = FindFirstObjectByType<CameraMovement>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        playerLight = player.gameObject.transform.GetComponentInChildren<PlayerLight>();
+    }
+
     //WILL EVENTUALLY INCLUDE CODE FOR A DEATH SCREEN
     /// <summary>
     /// Handles the player's death
     /// </summary>
     public void KillPlayer()
     {
-        Debug.Log("YOU DIED");
-        RestartLevel();
+        player.enabled = false;
+        playerLight.enabled = false;
+        Respawn();
     }
 
     /// <summary>
     /// Restarts the current level
     /// </summary>
-    public void RestartLevel()
+    public void Respawn()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        player.RevivePlayer();
+        playerLight.ResetLight();
+        respawnManager.ResetUnsavedLightables();
+        player.enabled = true;
+        playerLight.enabled = true;
     }
 
 }

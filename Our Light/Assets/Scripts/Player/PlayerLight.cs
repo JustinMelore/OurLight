@@ -13,22 +13,30 @@ public class PlayerLight : MonoBehaviour
     private MeshCollider coneCollider;
     private bool isLightOn;
     private Light visualLight;
+    private int lightStacks;
 
     [SerializeField] private float angle;
     [SerializeField] private float distance;
+    [SerializeField] private int lightStackMax;
 
-    /// <summary>
-    /// Creates the cone mesh that serves as the light's collision
-    /// </summary>
+    GameManager gameManager;
+    LightIndicator lightUI;
+
     void Start()
     {
         playerInput = new PlayerInput();
+        gameManager = FindFirstObjectByType<GameManager>();
+        lightUI = FindFirstObjectByType<LightIndicator>();
         isLightOn = false;
+        lightStacks = lightStackMax;
         coneCollider = GetComponent<MeshCollider>();
         SetupVisualLight();
         GenerateColliderMesh();
     }
 
+    /// <summary>
+    /// Creates the cone mesh that serves as the light's collision
+    /// </summary>
     private void GenerateColliderMesh()
     {
         Mesh lightColliderMesh = new Mesh();
@@ -64,6 +72,9 @@ public class PlayerLight : MonoBehaviour
         coneCollider.sharedMesh = lightColliderMesh;
     }
 
+    /// <summary>
+    /// Sets up the visible spotlight that indicates the light's effective area
+    /// </summary>
     private void SetupVisualLight()
     {
         visualLight = GameObject.FindGameObjectWithTag("VisibleLight").GetComponent<Light>();
@@ -82,9 +93,25 @@ public class PlayerLight : MonoBehaviour
         visualLight.enabled = isLightOn;
     }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// Disables the light and resets it back to its max stacks
+    /// </summary>
+    public void ResetLight()
     {
-        
+        if (isLightOn) OnUseLight();
+        AddLightStack(lightStackMax);
+    }
+    
+    /// <summary>
+    /// Adds the given value to the number of light stacks
+    /// </summary>
+    /// <param name="stackChange">The amount of light to add</param>
+    public void AddLightStack(int stackChange)
+    {
+        lightStacks += stackChange;
+        if(lightStacks > lightStackMax) lightStacks = lightStackMax;
+        else if(lightStacks <= 0) gameManager.KillPlayer();
+        lightUI.SetLightAmount(lightStacks);
+        Debug.Log("Light stack amount: " + lightStacks);
     }
 }

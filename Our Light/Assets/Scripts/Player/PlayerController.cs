@@ -48,6 +48,14 @@ public class PlayerController : MonoBehaviour
         if (characterController.isGrounded && playerVelocity.y < 0) playerVelocity.y = -2f;
         playerVelocity.y += gravity * Time.deltaTime;
         characterController.Move(playerVelocity * Time.deltaTime);
-        if (transform.position.y <= deathHeight) gameManager.KillPlayer();
+        if (transform.position.y <= deathHeight)
+        {
+            gameManager.KillPlayer();
+        }
+    }
+
+    public void RevivePlayer()
+    {
+        transform.position = FindFirstObjectByType<RespawnManager>().GetRespawnPoint();
     }
 }

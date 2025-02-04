@@ -10,6 +10,7 @@ public class Lightable : MonoBehaviour
     protected bool isLighted;
     protected float currentLightedTime;
     [SerializeField] protected float requiredTime;
+    [SerializeField] protected int lightCost;
 
     protected float currentCameraZoomOutTime;
     [SerializeField] protected float cameraZoomOutDuration;
@@ -22,6 +23,9 @@ public class Lightable : MonoBehaviour
     protected List<Collider> lightDetectors;
     protected List<GameObject> revealable;
     protected Collider lightCollider;
+
+    protected PlayerLight playerLight;
+    protected RespawnManager respawnManager;
 
     void Start()
     {
@@ -41,6 +45,8 @@ public class Lightable : MonoBehaviour
             if (child.tag == "LightDetector") lightDetectors.Add(child.GetComponent<Collider>());
             else if (child.tag == "Revealable") revealable.Add(child.GameObject());
         }
+        playerLight = FindFirstObjectByType<PlayerLight>();
+        respawnManager = FindFirstObjectByType<RespawnManager>();
     }
 
     protected void OnTriggerEnter(Collider other)
@@ -69,15 +75,9 @@ public class Lightable : MonoBehaviour
             playerCamera.orthographicSize = Mathf.Lerp(originalZoom, finalZoom, currentLightedTime / requiredTime);
             if (currentLightedTime >= requiredTime)
             {
-                foreach (Collider lightDetector in lightDetectors)
-                    lightDetector.enabled = false;
-                foreach (GameObject revealed in revealable)
-                {
-                    revealed.GetComponent<Collider>().enabled = true;
-                    revealed.GetComponent<MeshRenderer>().enabled = true;
-                }
-                isLighted = false;
+                ChangeLightableState(true);
                 currentZoom = finalZoom;
+                playerLight.AddLightStack(lightCost);
             }
         }
         else if(currentZoom != originalZoom)
@@ -85,6 +85,20 @@ public class Lightable : MonoBehaviour
             currentCameraZoomOutTime += Time.deltaTime;
             zoomCameraOut();
         }
+    }
+
+
+    public void ChangeLightableState(bool isRevealed)
+    {
+        if (isRevealed) respawnManager.AddUnsavedLightable(this);
+        foreach (Collider lightDetector in lightDetectors)
+            lightDetector.enabled = !isRevealed;
+        foreach (GameObject revealed in revealable)
+        {
+            revealed.GetComponent<Collider>().enabled = isRevealed;
+            revealed.GetComponent<MeshRenderer>().enabled = isRevealed;
+        }
+        isLighted = false;
     }
 
     /// <summary>
