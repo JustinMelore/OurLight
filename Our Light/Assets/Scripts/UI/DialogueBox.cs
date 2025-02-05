@@ -14,7 +14,7 @@ public class DialogueBox : MonoBehaviour
         dialogueQueue = new Queue<string>();
         dialogueText = transform.Find("DialogueText").GetComponent<TextMeshProUGUI>();
         //DELETE THIS AND UNCOMMENT THE CURSOR LOCK IN PlayerController
-        StartDialogue(new string[] {"Hello, World!", "This is the next piece of text.", "Goodbye!"});
+        //StartDialogue(new string[] {"Hello, World!", "This is the next piece of text.", "Goodbye!"});
     }
 
     public void StartDialogue(string[] dialogueList)
