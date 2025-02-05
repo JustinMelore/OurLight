@@ -23,7 +23,8 @@ public class PlayerController : MonoBehaviour
     {
         playerInput = new PlayerInput();
         characterController = GetComponent<CharacterController>();
-        Cursor.lockState = CursorLockMode.Locked;
+        //UNCOMMENT THIS
+        //Cursor.lockState = CursorLockMode.Locked;
         gameManager = FindFirstObjectByType<GameManager>();
     }
 
