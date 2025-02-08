@@ -15,7 +15,7 @@ public class InteractableNPC : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (hasSpoken) return;
+        if (other.gameObject.layer != 6 || hasSpoken) return;
         dialogueBox.StartDialogue(dialogueList);
         hasSpoken = true;
     }
