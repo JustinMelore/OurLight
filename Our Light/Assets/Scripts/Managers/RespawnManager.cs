@@ -28,7 +28,7 @@ public class RespawnManager : MonoBehaviour
 
     public void AddUnsavedLightable(Lightable unsavedLightable)
     {
-        currentlyLit.Add(unsavedLightable);
+        if(unsavedLightable is not LightableNPC) currentlyLit.Add(unsavedLightable);
     }
 
     public void ClearUnsavedLightables()

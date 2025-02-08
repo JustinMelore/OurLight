@@ -1,6 +1,5 @@
 using UnityEngine;
 
-//TODO Implement mode unlocking for player
 public class InteractableNPC : MonoBehaviour
 {
     [SerializeField] private string[] dialogueList;

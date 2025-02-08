@@ -51,6 +51,7 @@ public class Lightable : MonoBehaviour
 
     protected void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.layer != 9) return;
         currentLightedTime = 0f;
         isLighted = true;
         lightCollider = other;
@@ -58,6 +59,7 @@ public class Lightable : MonoBehaviour
 
     protected void OnTriggerExit(Collider other)
     {
+        if (other.gameObject.layer != 9) return;
         isLighted = false;
         currentZoom = playerCamera.orthographicSize;
     }
@@ -88,7 +90,7 @@ public class Lightable : MonoBehaviour
     }
 
 
-    public void ChangeLightableState(bool isRevealed)
+    public virtual void ChangeLightableState(bool isRevealed)
     {
         if (isRevealed) respawnManager.AddUnsavedLightable(this);
         foreach (Collider lightDetector in lightDetectors)

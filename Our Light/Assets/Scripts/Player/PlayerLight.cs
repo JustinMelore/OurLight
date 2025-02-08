@@ -1,6 +1,8 @@
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
 
 /// <summary>
 /// Handles the player's light and its functionality
@@ -14,6 +16,8 @@ public class PlayerLight : MonoBehaviour
     private bool isLightOn;
     private Light visualLight;
     private int lightStacks;
+    private List<LightMode> unlockedModes;
+    private int currentModeIndex;
 
     [SerializeField] private float angle;
     [SerializeField] private float distance;
@@ -30,6 +34,9 @@ public class PlayerLight : MonoBehaviour
         isLightOn = false;
         lightStacks = lightStackMax;
         coneCollider = GetComponent<MeshCollider>();
+        unlockedModes = new List<LightMode>();
+        unlockedModes.Add(LightMode.DEFAULT);
+        currentModeIndex = 0;
         SetupVisualLight();
         GenerateColliderMesh();
     }
@@ -113,5 +120,15 @@ public class PlayerLight : MonoBehaviour
         else if(lightStacks <= 0) gameManager.KillPlayer();
         lightUI.SetLightAmount(lightStacks);
         Debug.Log("Light stack amount: " + lightStacks);
+    }
+
+    /// <summary>
+    /// Unlocks the given light mode for the player to use
+    /// </summary>
+    /// <param name="unlockedMode">The mode to unlock</param>
+    public void UnlockMode(LightMode unlockedMode)
+    {
+        unlockedModes.Add(unlockedMode);
+        Debug.Log(unlockedModes);
     }
 }
