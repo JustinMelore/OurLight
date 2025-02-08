@@ -12,13 +12,14 @@ public class Lightable : MonoBehaviour
     [SerializeField] protected float requiredTime;
     [SerializeField] protected int lightCost;
 
-    protected float currentCameraZoomOutTime;
+    //protected float currentCameraZoomOutTime;
     [SerializeField] protected float cameraZoomOutDuration;
     [SerializeField] protected float zoomPercentage;
-    protected float currentZoom;
-    protected float finalZoom;
-    protected Camera playerCamera;
-    protected float originalZoom;
+    private CameraMovement playerCamera;
+    //protected float currentZoom;
+    //protected float finalZoom;
+    //protected Camera playerCamera;
+    //protected float originalZoom;
 
     protected List<Collider> lightDetectors;
     protected List<GameObject> revealable;
@@ -31,12 +32,12 @@ public class Lightable : MonoBehaviour
     {
         isLighted = false;
         currentLightedTime = 0f;
-
-        playerCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        originalZoom = playerCamera.orthographicSize;
-        currentZoom = originalZoom;
-        finalZoom = zoomPercentage * originalZoom;
-        currentCameraZoomOutTime = 0f;
+        playerCamera = FindFirstObjectByType<CameraMovement>();
+        //playerCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        //originalZoom = playerCamera.orthographicSize;
+        //currentZoom = originalZoom;
+        //finalZoom = zoomPercentage * originalZoom;
+        //currentCameraZoomOutTime = 0f;
         lightDetectors = new List<Collider>();
         revealable = new List<GameObject>();
         for (int i = 0; i < gameObject.transform.childCount; i++)
@@ -55,13 +56,14 @@ public class Lightable : MonoBehaviour
         currentLightedTime = 0f;
         isLighted = true;
         lightCollider = other;
+        playerCamera.StartCameraZoom(zoomPercentage, requiredTime);
     }
 
     protected void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.layer != 9) return;
         isLighted = false;
-        currentZoom = playerCamera.orthographicSize;
+        //currentZoom = playerCamera.orthographicSize;
+        playerCamera.StartCameraZoom(1f, cameraZoomOutDuration);
     }
 
     void Update()
@@ -74,19 +76,20 @@ public class Lightable : MonoBehaviour
         if (isLighted)
         {
             currentLightedTime += Time.deltaTime;
-            playerCamera.orthographicSize = Mathf.Lerp(originalZoom, finalZoom, currentLightedTime / requiredTime);
+            //playerCamera.orthographicSize = Mathf.Lerp(originalZoom, finalZoom, currentLightedTime / requiredTime);
             if (currentLightedTime >= requiredTime)
             {
                 ChangeLightableState(true);
-                currentZoom = finalZoom;
+                //currentZoom = finalZoom;
                 playerLight.AddLightStack(lightCost);
+                playerCamera.StartCameraZoom(1f, cameraZoomOutDuration);
             }
         }
-        else if(currentZoom != originalZoom)
-        {
-            currentCameraZoomOutTime += Time.deltaTime;
-            zoomCameraOut();
-        }
+        //else if(currentZoom != originalZoom)
+        //{
+        //    currentCameraZoomOutTime += Time.deltaTime;
+        //    zoomCameraOut();
+        //}
     }
 
 
@@ -106,15 +109,14 @@ public class Lightable : MonoBehaviour
     /// <summary>
     /// Returns the player's camera to its original orthographic size
     /// </summary>
-    protected void zoomCameraOut()
-    {
-        
-        if(playerCamera.orthographicSize >= originalZoom)
-        {
-            currentZoom = originalZoom;
-            currentCameraZoomOutTime = 0f;
-            return;
-        }
-        playerCamera.orthographicSize = Mathf.Lerp(currentZoom, finalZoom / zoomPercentage, currentCameraZoomOutTime / cameraZoomOutDuration);
-    }
+    //protected void zoomCameraOut()
+    //{
+    //    if(playerCamera.orthographicSize >= originalZoom)
+    //    {
+    //        currentZoom = originalZoom;
+    //        currentCameraZoomOutTime = 0f;
+    //        return;
+    //    }
+    //    playerCamera.orthographicSize = Mathf.Lerp(currentZoom, finalZoom / zoomPercentage, currentCameraZoomOutTime / cameraZoomOutDuration);
+    //}
 }
