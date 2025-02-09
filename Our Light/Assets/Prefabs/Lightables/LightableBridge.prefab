@@ -373,8 +373,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   requiredTime: 3
+  lightCost: 0
   cameraZoomOutDuration: 0.5
   zoomPercentage: 0.66
+  specialModes: 01000000
 --- !u!54 &7068282151483253425
 Rigidbody:
   m_ObjectHideFlags: 0
