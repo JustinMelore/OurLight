@@ -43,15 +43,32 @@ public class Lightable : MonoBehaviour
 
     protected void OnTriggerEnter(Collider other)
     {
-        LightMode playerMode = playerLight.GetCurrentMode();
-        if (other.gameObject.layer != 9 || (playerMode != LightMode.DEFAULT && !specialModes.Contains(playerMode))) return;
+        if (other.gameObject.layer != 9) return;
+        lightCollider = other;
+        if (!CheckLightModeValidity()) return;
+        StartLighting();
+    }
+
+    protected void StartLighting()
+    {
         currentLightedTime = 0f;
         isLighted = true;
-        lightCollider = other;
         playerCamera.StartCameraZoom(zoomPercentage, requiredTime);
     }
 
+    protected bool CheckLightModeValidity()
+    {
+        LightMode playerMode = playerLight.GetCurrentMode();
+        return playerMode == LightMode.DEFAULT || specialModes.Contains(playerMode);
+    }
+
     protected void OnTriggerExit(Collider other)
+    {
+        lightCollider = null;
+        StopLighting();
+    }
+
+    protected void StopLighting()
     {
         isLighted = false;
         playerCamera.StartCameraZoom(1f, cameraZoomOutDuration);
@@ -60,16 +77,20 @@ public class Lightable : MonoBehaviour
     void Update()
     {
         LightMode playerMode = playerLight.GetCurrentMode();
-        if((lightCollider != null && !lightCollider.enabled) || (playerMode != LightMode.DEFAULT && !specialModes.Contains(playerMode)))
+        if((lightCollider != null && !lightCollider.enabled) || (!CheckLightModeValidity() && isLighted))
         {
-            OnTriggerExit(lightCollider);
-            lightCollider = null;
+            StopLighting();
+        }
+        else if(lightCollider != null && CheckLightModeValidity() && !isLighted)
+        {
+            StartLighting();
         }
         if (isLighted)
         {
             currentLightedTime += Time.deltaTime;
             if (currentLightedTime >= requiredTime)
             {
+                lightCollider = null;
                 ChangeLightableState(true);
                 if(playerMode == LightMode.DEFAULT) playerLight.AddLightStack(lightCost);
                 playerCamera.StartCameraZoom(1f, cameraZoomOutDuration);
