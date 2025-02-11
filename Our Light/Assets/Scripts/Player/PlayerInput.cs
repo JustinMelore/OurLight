@@ -44,6 +44,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchMode"",
+                    ""type"": ""Value"",
+                    ""id"": ""3e47912f-449b-4018-94d6-608342c71f43"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -112,6 +121,39 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""UseLight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""f6dcc750-1cb5-408b-933e-a6b9368d14d4"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchMode"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""81751a2e-dc0d-48e9-babe-e6a3c70f0a7a"",
+                    ""path"": ""<Mouse>/scroll/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""2e275633-08f5-4e1f-b956-dac561b975af"",
+                    ""path"": ""<Mouse>/scroll/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -122,6 +164,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Movement = asset.FindActionMap("Movement", throwIfNotFound: true);
         m_Movement_Move = m_Movement.FindAction("Move", throwIfNotFound: true);
         m_Movement_UseLight = m_Movement.FindAction("UseLight", throwIfNotFound: true);
+        m_Movement_SwitchMode = m_Movement.FindAction("SwitchMode", throwIfNotFound: true);
     }
 
     ~@PlayerInput()
@@ -190,12 +233,14 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private List<IMovementActions> m_MovementActionsCallbackInterfaces = new List<IMovementActions>();
     private readonly InputAction m_Movement_Move;
     private readonly InputAction m_Movement_UseLight;
+    private readonly InputAction m_Movement_SwitchMode;
     public struct MovementActions
     {
         private @PlayerInput m_Wrapper;
         public MovementActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Movement_Move;
         public InputAction @UseLight => m_Wrapper.m_Movement_UseLight;
+        public InputAction @SwitchMode => m_Wrapper.m_Movement_SwitchMode;
         public InputActionMap Get() { return m_Wrapper.m_Movement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -211,6 +256,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @UseLight.started += instance.OnUseLight;
             @UseLight.performed += instance.OnUseLight;
             @UseLight.canceled += instance.OnUseLight;
+            @SwitchMode.started += instance.OnSwitchMode;
+            @SwitchMode.performed += instance.OnSwitchMode;
+            @SwitchMode.canceled += instance.OnSwitchMode;
         }
 
         private void UnregisterCallbacks(IMovementActions instance)
@@ -221,6 +269,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @UseLight.started -= instance.OnUseLight;
             @UseLight.performed -= instance.OnUseLight;
             @UseLight.canceled -= instance.OnUseLight;
+            @SwitchMode.started -= instance.OnSwitchMode;
+            @SwitchMode.performed -= instance.OnSwitchMode;
+            @SwitchMode.canceled -= instance.OnSwitchMode;
         }
 
         public void RemoveCallbacks(IMovementActions instance)
@@ -242,5 +293,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnUseLight(InputAction.CallbackContext context);
+        void OnSwitchMode(InputAction.CallbackContext context);
     }
 }

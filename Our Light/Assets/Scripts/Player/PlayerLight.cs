@@ -1,6 +1,9 @@
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
+using System;
 
 /// <summary>
 /// Handles the player's light and its functionality
@@ -14,6 +17,8 @@ public class PlayerLight : MonoBehaviour
     private bool isLightOn;
     private Light visualLight;
     private int lightStacks;
+    private List<LightMode> unlockedModes;
+    private int currentModeIndex;
 
     [SerializeField] private float angle;
     [SerializeField] private float distance;
@@ -30,6 +35,9 @@ public class PlayerLight : MonoBehaviour
         isLightOn = false;
         lightStacks = lightStackMax;
         coneCollider = GetComponent<MeshCollider>();
+        unlockedModes = new List<LightMode>();
+        unlockedModes.Add(LightMode.DEFAULT);
+        currentModeIndex = 0;
         SetupVisualLight();
         GenerateColliderMesh();
     }
@@ -93,6 +101,25 @@ public class PlayerLight : MonoBehaviour
         visualLight.enabled = isLightOn;
     }
 
+    private void OnSwitchMode(InputValue inputValue)
+    {
+        var scrollInput = inputValue.Get();
+        if (scrollInput == null || unlockedModes.Count == 1) return;
+        currentModeIndex += (int)(Single)scrollInput;
+        if (currentModeIndex >= unlockedModes.Count) currentModeIndex = 0;
+        else if(currentModeIndex < 0) currentModeIndex = unlockedModes.Count - 1;
+        switch (unlockedModes[currentModeIndex])
+        {
+            case LightMode.DEFAULT:
+                visualLight.color = new Color(1f, 233f / 255f, 0f);
+                break;
+            case LightMode.BRIDGE:
+                visualLight.color = new Color(1f, 108f / 255f, 0f);
+                break;
+        }
+        Debug.Log(visualLight.color);
+    }
+
     /// <summary>
     /// Disables the light and resets it back to its max stacks
     /// </summary>
@@ -113,5 +140,23 @@ public class PlayerLight : MonoBehaviour
         else if(lightStacks <= 0) gameManager.KillPlayer();
         lightUI.SetLightAmount(lightStacks);
         Debug.Log("Light stack amount: " + lightStacks);
+    }
+
+    /// <summary>
+    /// Unlocks the given light mode for the player to use
+    /// </summary>
+    /// <param name="unlockedMode">The mode to unlock</param>
+    public void UnlockMode(LightMode unlockedMode)
+    {
+        unlockedModes.Add(unlockedMode);
+        Debug.Log(unlockedModes);
+    }
+
+    /// <summary>
+    /// Returns the current light mode
+    /// </summary>
+    public LightMode GetCurrentMode()
+    {
+        return unlockedModes[currentModeIndex];
     }
 }
