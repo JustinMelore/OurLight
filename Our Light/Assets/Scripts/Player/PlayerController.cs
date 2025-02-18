@@ -1,7 +1,9 @@
 using System;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Handles actions performed by the player character in response to user input, such as movement.
@@ -58,5 +60,11 @@ public class PlayerController : MonoBehaviour
     public void RevivePlayer()
     {
         transform.position = FindFirstObjectByType<RespawnManager>().GetRespawnPoint();
+    }
+
+    //FOR TESTING PURPOSES, WILL EVENTUALLY BE REMOVED
+    private void OnReset()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

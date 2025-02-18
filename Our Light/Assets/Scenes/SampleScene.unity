@@ -4581,6 +4581,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: BridgeNPC
       objectReference: {fileID: 0}
+    - target: {fileID: 6454129882499504630, guid: ae40ab0677dd57a4cb5ed42fcf3cc0c8, type: 3}
+      propertyPath: 'dialogueList.Array.data[0]'
+      value: I can't find my friends.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6454129882499504630, guid: ae40ab0677dd57a4cb5ed42fcf3cc0c8, type: 3}
+      propertyPath: 'dialogueList.Array.data[1]'
+      value: I've had to p-p-p-play by myself.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6454129882499504630, guid: ae40ab0677dd57a4cb5ed42fcf3cc0c8, type: 3}
+      propertyPath: 'dialogueList.Array.data[2]'
+      value: Can you h-help me find them?
+      objectReference: {fileID: 0}
     - target: {fileID: 6656361838557255509, guid: ae40ab0677dd57a4cb5ed42fcf3cc0c8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 26.12
