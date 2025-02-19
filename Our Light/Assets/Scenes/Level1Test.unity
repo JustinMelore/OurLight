@@ -967,6 +967,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightableBridge (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7989361407052562708, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7989361407052562708, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.02
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 4504256190791611944, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
