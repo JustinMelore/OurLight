@@ -136,8 +136,12 @@ public class PlayerLight : MonoBehaviour
     public void AddLightStack(int stackChange)
     {
         lightStacks += stackChange;
-        if(lightStacks > lightStackMax) lightStacks = lightStackMax;
-        else if(lightStacks <= 0) gameManager.KillPlayer();
+        if (lightStacks > lightStackMax) lightStacks = lightStackMax;
+        else if (lightStacks <= 0)
+        {
+            lightStacks = 0;
+            gameManager.KillPlayer();
+        }
         lightUI.SetLightAmount(lightStacks);
         Debug.Log("Light stack amount: " + lightStacks);
     }
