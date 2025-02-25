@@ -24,7 +24,6 @@ public class PlayerController : MonoBehaviour
     {
         playerInput = new PlayerInput();
         characterController = GetComponent<CharacterController>();
-        //UNCOMMENT THIS
         Cursor.lockState = CursorLockMode.Locked;
         gameManager = FindFirstObjectByType<GameManager>();
     }
@@ -36,6 +35,7 @@ public class PlayerController : MonoBehaviour
     private void OnMove(InputValue inputValue)
     {
         Vector3 inputVector = inputValue.Get<Vector3>();
+        inputVector = Quaternion.Euler(0, -45, 0) * inputVector;
         playerVelocity.x = inputVector.z * moveSpeed;
         playerVelocity.z = -inputVector.x * moveSpeed;
         if(inputVector != Vector3.zero)
