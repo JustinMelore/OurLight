@@ -5302,7 +5302,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5491009219994949666, guid: c8d24ad79f9ec1b49a4e9d6660ef94c9, type: 3}
       propertyPath: colorChangeTime
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7203909074162314459, guid: c8d24ad79f9ec1b49a4e9d6660ef94c9, type: 3}
       propertyPath: m_Name

@@ -256,6 +256,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66469bee47ebc4e4a830dea1a7ad175f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  usedColor: {r: 0.10980392, g: 0.7647059, b: 0.84313726, a: 0}
+  colorChangeTime: 1.5
 --- !u!54 &7529628992628418948
 Rigidbody:
   m_ObjectHideFlags: 0
