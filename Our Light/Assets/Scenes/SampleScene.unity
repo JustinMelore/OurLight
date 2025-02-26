@@ -5284,6 +5284,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1542718248488398295, guid: c8d24ad79f9ec1b49a4e9d6660ef94c9, type: 3}
+      propertyPath: m_UseColorTemperature
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5491009219994949666, guid: c8d24ad79f9ec1b49a4e9d6660ef94c9, type: 3}
+      propertyPath: usedColor.b
+      value: 0.84276724
+      objectReference: {fileID: 0}
+    - target: {fileID: 5491009219994949666, guid: c8d24ad79f9ec1b49a4e9d6660ef94c9, type: 3}
+      propertyPath: usedColor.g
+      value: 0.7654378
+      objectReference: {fileID: 0}
+    - target: {fileID: 5491009219994949666, guid: c8d24ad79f9ec1b49a4e9d6660ef94c9, type: 3}
+      propertyPath: usedColor.r
+      value: 0.10865861
+      objectReference: {fileID: 0}
+    - target: {fileID: 5491009219994949666, guid: c8d24ad79f9ec1b49a4e9d6660ef94c9, type: 3}
+      propertyPath: colorChangeTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7203909074162314459, guid: c8d24ad79f9ec1b49a4e9d6660ef94c9, type: 3}
       propertyPath: m_Name
       value: Checkpoint
