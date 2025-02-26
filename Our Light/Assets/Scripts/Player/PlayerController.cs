@@ -18,6 +18,10 @@ public class PlayerController : MonoBehaviour
     private float deathHeight = -5f;
 
     private Vector3 playerVelocity;
+    private Vector3 inputVector;
+
+    private float buttonPressedTime;
+    private float requiredButtonPressTime;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,6 +30,8 @@ public class PlayerController : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         gameManager = FindFirstObjectByType<GameManager>();
+        requiredButtonPressTime = 0.03f;
+        buttonPressedTime = 0f;
     }
 
     /// <summary>
@@ -34,22 +40,25 @@ public class PlayerController : MonoBehaviour
     /// <param name="inputValue">The inputs provided by the user to update the movement off of</param>
     private void OnMove(InputValue inputValue)
     {
-        Vector3 inputVector = inputValue.Get<Vector3>();
+        buttonPressedTime = 0f;
+        inputVector = inputValue.Get<Vector3>();
         inputVector = Quaternion.Euler(0, -45, 0) * inputVector;
         playerVelocity.x = inputVector.z * moveSpeed;
         playerVelocity.z = -inputVector.x * moveSpeed;
-        if(inputVector != Vector3.zero)
-        {
-            transform.rotation = Quaternion.LookRotation(inputVector);
-        }
     }
+
 
     // Update is called once per frame
     void Update()
     {
         if (characterController.isGrounded && playerVelocity.y < 0) playerVelocity.y = -2f;
         playerVelocity.y += gravity * Time.deltaTime;
-        characterController.Move(playerVelocity * Time.deltaTime);
+        buttonPressedTime += Time.deltaTime;
+        if(buttonPressedTime >= requiredButtonPressTime && inputVector != Vector3.zero)
+        {
+            characterController.Move(playerVelocity * Time.deltaTime);
+            transform.rotation = Quaternion.LookRotation(inputVector);
+        }
         if (transform.position.y <= deathHeight)
         {
             gameManager.KillPlayer();
