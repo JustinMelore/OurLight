@@ -58,6 +58,9 @@ public class PlayerController : MonoBehaviour
         {
             characterController.Move(playerVelocity * Time.deltaTime);
             transform.rotation = Quaternion.LookRotation(inputVector);
+        } else
+        {
+            characterController.Move(new Vector3(0, playerVelocity.y, 0) * Time.deltaTime);
         }
         if (transform.position.y <= deathHeight)
         {
