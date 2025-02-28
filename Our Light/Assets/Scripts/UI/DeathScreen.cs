@@ -6,11 +6,13 @@ public class DeathScreen : MonoBehaviour
 {
     private RawImage fade;
     private CanvasGroup respawnScreen;
+    private GameManager gameManager;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         respawnScreen = transform.Find("RespawnScreen").GetComponent<CanvasGroup>();
+        gameManager = FindFirstObjectByType<GameManager>();
         fade = transform.GetComponentInChildren<RawImage>();
         fade.color = new Color(0, 0, 0, 1);
         FadeIn(1.5f);
@@ -53,7 +55,7 @@ public class DeathScreen : MonoBehaviour
     private IEnumerator HideDeathScreenRoutine(float fadeTime)
     {
         respawnScreen.alpha = 0f;
-        yield return StartCoroutine(Fade(1f, fadeTime));
+        yield return StartCoroutine(Fade(0f, fadeTime));
     }
 
     public void HideDeathScreen()
@@ -61,9 +63,14 @@ public class DeathScreen : MonoBehaviour
         Coroutine hideDeathScreen = StartCoroutine(HideDeathScreenRoutine(1f));
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnConfirmRespawn()
     {
-        
+        gameManager.Respawn();
+    }
+
+    //TODO Replace this with code that takes you to the main menu
+    public void OnCancelRespawn()
+    {
+        Application.Quit();
     }
 }

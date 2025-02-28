@@ -31,7 +31,6 @@ public class GameManager : MonoBehaviour
         playerLight.enabled = false;
         Cursor.lockState = CursorLockMode.None;
         deathScreen.ShowDeathScreen();
-        //Respawn();
     }
 
     /// <summary>
@@ -42,6 +41,8 @@ public class GameManager : MonoBehaviour
         player.RevivePlayer();
         playerLight.ResetLight();
         respawnManager.ResetUnsavedLightables();
+        deathScreen.HideDeathScreen();
+        Cursor.lockState = CursorLockMode.Locked;
         player.enabled = true;
         playerLight.enabled = true;
     }
