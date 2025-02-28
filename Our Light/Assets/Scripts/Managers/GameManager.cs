@@ -11,16 +11,17 @@ public class GameManager : MonoBehaviour
     private CameraMovement mainCamera;
     private PlayerController player;
     private PlayerLight playerLight;
+    private DeathScreen deathScreen;
 
     private void Start()
     {
         respawnManager = FindFirstObjectByType<RespawnManager>();
         mainCamera = FindFirstObjectByType<CameraMovement>();
+        deathScreen = FindFirstObjectByType<DeathScreen>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         playerLight = player.gameObject.transform.GetComponentInChildren<PlayerLight>();
     }
 
-    //WILL EVENTUALLY INCLUDE CODE FOR A DEATH SCREEN
     /// <summary>
     /// Handles the player's death
     /// </summary>
@@ -28,7 +29,9 @@ public class GameManager : MonoBehaviour
     {
         player.enabled = false;
         playerLight.enabled = false;
-        Respawn();
+        Cursor.lockState = CursorLockMode.None;
+        deathScreen.ShowDeathScreen();
+        //Respawn();
     }
 
     /// <summary>

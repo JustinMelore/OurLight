@@ -5,10 +5,12 @@ using UnityEngine.UI;
 public class DeathScreen : MonoBehaviour
 {
     private RawImage fade;
+    private CanvasGroup respawnScreen;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        respawnScreen = transform.Find("RespawnScreen").GetComponent<CanvasGroup>();
         fade = transform.GetComponentInChildren<RawImage>();
         fade.color = new Color(0, 0, 0, 1);
         FadeIn(1.5f);
@@ -35,6 +37,28 @@ public class DeathScreen : MonoBehaviour
     public void FadeOut(float fadeTime)
     {
         Coroutine fadeOut = StartCoroutine(Fade(1, fadeTime));
+    }
+
+    private IEnumerator ShowDeathScreenRoutine(float fadeTime)
+    {
+        yield return StartCoroutine(Fade(1f, fadeTime));
+        respawnScreen.alpha = 1f;
+    }
+
+    public void ShowDeathScreen()
+    {
+        Coroutine showDeathScreen = StartCoroutine(ShowDeathScreenRoutine(1f));
+    }
+
+    private IEnumerator HideDeathScreenRoutine(float fadeTime)
+    {
+        respawnScreen.alpha = 0f;
+        yield return StartCoroutine(Fade(1f, fadeTime));
+    }
+
+    public void HideDeathScreen()
+    {
+        Coroutine hideDeathScreen = StartCoroutine(HideDeathScreenRoutine(1f));
     }
 
     // Update is called once per frame
