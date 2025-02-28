@@ -375,7 +375,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1305,6 +1305,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3495777975534540088}
+  - component: {fileID: 1923122849449664791}
   m_Layer: 0
   m_Name: RespawnScreen
   m_TagString: Untagged
@@ -1331,6 +1332,18 @@ Transform:
   - {fileID: 5779515798078483123}
   m_Father: {fileID: 3995078972460364316}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!225 &1923122849449664791
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5436306021663656280}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &5513848784156590601
 GameObject:
   m_ObjectHideFlags: 0
@@ -1805,6 +1818,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3995078972460364316}
+  - component: {fileID: 2183892577570883488}
   m_Layer: 0
   m_Name: DeathScreen
   m_TagString: Untagged
@@ -1829,3 +1843,15 @@ Transform:
   - {fileID: 3495777975534540088}
   m_Father: {fileID: 9051792845194675781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2183892577570883488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8556969224958393177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 658c8cda66437a447a9e5a2b86b977d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
