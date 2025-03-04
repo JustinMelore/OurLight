@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     private PlayerLight playerLight;
     private DeathScreen deathScreen;
 
-    private void Start()
+    private void Awake()
     {
         respawnManager = FindFirstObjectByType<RespawnManager>();
         mainCamera = FindFirstObjectByType<CameraMovement>();
@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
         player.enabled = false;
         playerLight.enabled = false;
         Cursor.lockState = CursorLockMode.None;
+        deathScreen.gameObject.SetActive(true);
         deathScreen.ShowDeathScreen();
     }
 

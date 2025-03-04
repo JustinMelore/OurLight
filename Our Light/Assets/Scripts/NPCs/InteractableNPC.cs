@@ -5,13 +5,13 @@ public class InteractableNPC : MonoBehaviour
     [SerializeField] private string[] dialogueList;
     private DialogueBox dialogueBox;
     private bool hasSpoken;
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    private void Awake()
     {
         dialogueBox = FindFirstObjectByType<DialogueBox>();
-        hasSpoken = false;
+        hasSpoken = false;        
     }
+
 
     private void OnTriggerEnter(Collider other)
     {

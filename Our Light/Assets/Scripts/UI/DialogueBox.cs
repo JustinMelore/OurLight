@@ -8,16 +8,22 @@ public class DialogueBox : MonoBehaviour
     private Queue<string> dialogueQueue;
     private TextMeshProUGUI dialogueText;
 
-    void Start()
+    void Awake()
     {
         boxDisplay = GetComponent<CanvasGroup>();
         dialogueQueue = new Queue<string>();
         dialogueText = transform.Find("DialogueText").GetComponent<TextMeshProUGUI>();
     }
 
+    private void Start()
+    {
+        gameObject.SetActive(false);
+    }
+
     public void StartDialogue(string[] dialogueList)
     {
         Cursor.lockState = CursorLockMode.None;
+        gameObject.SetActive(true);
         foreach(string dialogue in dialogueList) dialogueQueue.Enqueue(dialogue);
         boxDisplay.alpha = 1f;
         NextDialogue();
@@ -36,6 +42,7 @@ public class DialogueBox : MonoBehaviour
     public void EndDialogue()
     {
         boxDisplay.alpha = 0f;
+        gameObject.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
     }
 }

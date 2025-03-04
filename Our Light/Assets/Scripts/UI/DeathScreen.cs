@@ -9,12 +9,16 @@ public class DeathScreen : MonoBehaviour
     private GameManager gameManager;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         respawnScreen = transform.Find("RespawnScreen").GetComponent<CanvasGroup>();
         gameManager = FindFirstObjectByType<GameManager>();
         fade = transform.GetComponentInChildren<RawImage>();
         fade.color = new Color(0, 0, 0, 1);
+    }
+
+    private void Start()
+    {
         FadeIn(1.5f);
     }
 
