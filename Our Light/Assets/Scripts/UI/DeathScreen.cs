@@ -1,17 +1,20 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class DeathScreen : MonoBehaviour
 {
     private RawImage fade;
     private CanvasGroup respawnScreen;
+    private CanvasGroup confirmationScreen;
     private GameManager gameManager;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         respawnScreen = transform.Find("RespawnScreen").GetComponent<CanvasGroup>();
+        confirmationScreen = transform.Find("ConfirmationScreen").GetComponent<CanvasGroup>();
         gameManager = FindFirstObjectByType<GameManager>();
         fade = transform.GetComponentInChildren<RawImage>();
         fade.color = new Color(0, 0, 0, 1);
@@ -20,6 +23,23 @@ public class DeathScreen : MonoBehaviour
     private void Start()
     {
         FadeIn(1.5f);
+        confirmationScreen.gameObject.SetActive(false);
+    }
+
+    private void SwitchToConfirmScreen()
+    {
+        respawnScreen.alpha = 0;
+        respawnScreen.gameObject.SetActive(false);
+        confirmationScreen.gameObject.SetActive(true);
+        confirmationScreen.alpha = 1;
+    }
+
+    private void SwitchToRespawnScreen()
+    {
+        confirmationScreen.alpha = 0;
+        confirmationScreen.gameObject.SetActive(false);
+        respawnScreen.alpha = 1;
+        respawnScreen.gameObject.SetActive(true);
     }
 
     private IEnumerator Fade(float finalAlpha, float fadeTime)
@@ -72,9 +92,18 @@ public class DeathScreen : MonoBehaviour
         gameManager.Respawn();
     }
 
-    //TODO Replace this with code that takes you to the main menu
     public void OnCancelRespawn()
     {
-        Application.Quit();
+        SwitchToConfirmScreen();
+    }
+
+    public void OnConfirmQuit()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void OnCancelQuit()
+    {
+        SwitchToRespawnScreen();
     }
 }
