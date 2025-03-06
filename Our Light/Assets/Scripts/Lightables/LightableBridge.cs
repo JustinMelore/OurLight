@@ -47,6 +47,7 @@ public class LightableBridge : Lightable
         {
             currentScaleTime += Time.deltaTime;
             float newScale = Mathf.Lerp(0f, blockScale, currentScaleTime / blockScaleTime);
+            block.transform.localScale = new Vector3(newScale, newScale, newScale);
             yield return null;
         }
     }
