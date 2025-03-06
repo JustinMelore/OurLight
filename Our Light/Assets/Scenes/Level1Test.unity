@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 2277995344174228148, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
+      propertyPath: lightCost
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 4514132196831745454, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
       propertyPath: m_LocalScale.x
       value: 11.5702
@@ -972,6 +976,10 @@ PrefabInstance:
     - target: {fileID: 1471273363959920854, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 26.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 2277995344174228148, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
+      propertyPath: lightCost
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4514132196831745454, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
       propertyPath: m_LocalScale.x
@@ -2282,6 +2290,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1192421179}
     m_Modifications:
+    - target: {fileID: 2277995344174228148, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
+      propertyPath: lightCost
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 4610383195581979053, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
       propertyPath: lightCost
       value: -1
@@ -3844,6 +3856,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 2277995344174228148, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
+      propertyPath: lightCost
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 4514132196831745454, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
       propertyPath: m_LocalScale.x
       value: 21.871977
@@ -5169,6 +5185,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 2277995344174228148, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
+      propertyPath: lightCost
+      value: -2
+      objectReference: {fileID: 0}
     - target: {fileID: 4514132196831745454, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
       propertyPath: m_LocalScale.x
       value: 17.952427
@@ -5496,6 +5516,10 @@ PrefabInstance:
     - target: {fileID: 1471273363959920854, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2277995344174228148, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
+      propertyPath: lightCost
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 4514132196831745454, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
       propertyPath: m_LocalScale.x
@@ -6923,6 +6947,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 16.051
       objectReference: {fileID: 0}
+    - target: {fileID: 2277995344174228148, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
+      propertyPath: lightCost
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 4514132196831745454, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
       propertyPath: m_LocalScale.x
       value: 7.265035
@@ -7678,6 +7706,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2277995344174228148, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
+      propertyPath: lightCost
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 4514132196831745454, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
       propertyPath: m_LocalScale.x
       value: 6.90717
@@ -8386,6 +8418,10 @@ PrefabInstance:
     - target: {fileID: 1471273363959920854, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2277995344174228148, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
+      propertyPath: lightCost
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4514132196831745454, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
       propertyPath: m_LocalScale.x
