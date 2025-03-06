@@ -24,7 +24,7 @@ public class Lightable : MonoBehaviour
     protected PlayerLight playerLight;
     protected RespawnManager respawnManager;
 
-    void Start()
+    protected virtual void Awake()
     {
         isLighted = false;
         currentLightedTime = 0f;
