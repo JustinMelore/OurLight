@@ -341,6 +341,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 5469620043589559387, guid: dc233ef3e6abf0c47924a0018f399f84, type: 3}
+    - target: {fileID: -5754084199372789682, guid: cc2831f4fa1f4b245bf81530567f99a0, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -5001725145476840780, guid: 1e1dbfc19439e4e4c9229ecb26d546a1, type: 3}
     - target: {fileID: 919132149155446097, guid: cc2831f4fa1f4b245bf81530567f99a0, type: 3}
       propertyPath: m_Name
       value: Lampost
