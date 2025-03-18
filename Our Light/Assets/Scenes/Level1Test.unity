@@ -2472,10 +2472,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1192421179}
     m_Modifications:
-    - target: {fileID: 2277995344174228148, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
-      propertyPath: lightCost
-      value: -1
-      objectReference: {fileID: 0}
     - target: {fileID: 4610383195581979053, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
       propertyPath: lightCost
       value: -1
@@ -5619,11 +5615,6 @@ PrefabInstance:
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
-<<<<<<< HEAD
-    - target: {fileID: 2277995344174228148, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
-      propertyPath: lightCost
-      value: -2
-=======
     - target: {fileID: 1471273363959920854, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0.3224259
@@ -5635,7 +5626,10 @@ PrefabInstance:
     - target: {fileID: 1471273363959920854, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 37.619
->>>>>>> bbc5717c6e43dcc04bfc3c05807163a9fbe71213
+      objectReference: {fileID: 0}
+    - target: {fileID: 2277995344174228148, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
+      propertyPath: lightCost
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 4514132196831745454, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
       propertyPath: m_LocalScale.x
@@ -5973,11 +5967,6 @@ PrefabInstance:
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
-<<<<<<< HEAD
-    - target: {fileID: 2277995344174228148, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
-      propertyPath: lightCost
-      value: -4
-=======
     - target: {fileID: 1471273363959920854, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0.32053423
@@ -5989,7 +5978,10 @@ PrefabInstance:
     - target: {fileID: 1471273363959920854, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 37.39
->>>>>>> bbc5717c6e43dcc04bfc3c05807163a9fbe71213
+      objectReference: {fileID: 0}
+    - target: {fileID: 2277995344174228148, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
+      propertyPath: lightCost
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 4514132196831745454, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
       propertyPath: m_LocalScale.x
