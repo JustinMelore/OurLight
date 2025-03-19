@@ -147,6 +147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6290936404281655674}
   - component: {fileID: 7534274937717609603}
+  - component: {fileID: 9117248737399790521}
   m_Layer: 0
   m_Name: CameraPivot
   m_TagString: Untagged
@@ -182,3 +183,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 365785616d7373b4684218ab1892235f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!81 &9117248737399790521
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1452893456030185087}
+  m_Enabled: 1
