@@ -362,5 +362,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d478b1e5f083a984b83ab77ba15fd01c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioFadeTime: 0.5
-  audioVolumeMax: 1
+  audioFadeTime: 1
+  audioVolumeMax: 0.6
