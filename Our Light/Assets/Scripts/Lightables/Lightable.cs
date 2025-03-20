@@ -49,7 +49,7 @@ public class Lightable : MonoBehaviour
         StartLighting();
     }
 
-    protected void StartLighting()
+    protected virtual void StartLighting()
     {
         currentLightedTime = 0f;
         isLighted = true;
@@ -68,8 +68,9 @@ public class Lightable : MonoBehaviour
         StopLighting();
     }
 
-    protected void StopLighting()
+    protected virtual void StopLighting()
     {
+        Debug.Log("Stopping Lighting");
         isLighted = false;
         playerCamera.StartCameraZoom(1f, cameraZoomOutDuration);
     }
@@ -79,7 +80,7 @@ public class Lightable : MonoBehaviour
         LightMode playerMode = playerLight.GetCurrentMode();
         if((lightCollider != null && !lightCollider.enabled) || (!CheckLightModeValidity() && isLighted))
         {
-            StopLighting();
+            OnTriggerExit(lightCollider);
         }
         else if(lightCollider != null && CheckLightModeValidity() && !isLighted)
         {
