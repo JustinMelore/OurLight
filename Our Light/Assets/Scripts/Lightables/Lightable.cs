@@ -70,7 +70,6 @@ public class Lightable : MonoBehaviour
 
     protected virtual void StopLighting()
     {
-        Debug.Log("Stopping Lighting");
         isLighted = false;
         playerCamera.StartCameraZoom(1f, cameraZoomOutDuration);
     }

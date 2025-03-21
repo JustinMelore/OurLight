@@ -1736,6 +1736,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 594183767}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &618078115 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5091233021787065320, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
+  m_PrefabInstance: {fileID: 5511636893373244681}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &644818374
 GameObject:
   m_ObjectHideFlags: 0
@@ -5435,6 +5440,10 @@ PrefabInstance:
       propertyPath: lightCost
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 2277995344174228148, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
+      propertyPath: crystalRenderer
+      value: 
+      objectReference: {fileID: 618078115}
     - target: {fileID: 4610383195581979053, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
       propertyPath: lightCost
       value: -1

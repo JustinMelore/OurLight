@@ -413,6 +413,7 @@ MonoBehaviour:
   specialModes: 01000000
   blockScale: 10
   blockScaleTime: 0.5
+  crystalGlowIntensity: 50
 --- !u!54 &7068282151483253425
 Rigidbody:
   m_ObjectHideFlags: 0
