@@ -27,13 +27,19 @@ public class LightableBridge : Lightable
             blocks.Add(blocksContainer.GetChild(i).gameObject);
             blocks[i].transform.localScale = Vector3.zero;
         }
-        crystalBaseColor = GetCrystalRenderer(lightDetectors[0]).material.GetColor("_EmissionColor");
+        crystalBaseColor = GetCrystalRenderers(lightDetectors[0])[0].material.GetColor("_EmissionColor");
         currentIntensity = 1f;
     }
 
-    private MeshRenderer GetCrystalRenderer(Collider lightDetector)
+    private MeshRenderer[] GetCrystalRenderers(Collider lightDetector)
     {
-        return lightDetector.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
+        Transform crystalContainer = lightDetector.transform.GetChild(0).GetChild(0);
+        MeshRenderer[] crystals = new MeshRenderer[crystalContainer.childCount];
+        for (int i = 0; i < crystals.Length; i++)
+        {
+            crystals[i] = crystalContainer.GetChild(i).GetComponent<MeshRenderer>();
+        }
+        return crystals;
     }
 
     public override void ChangeLightableState(bool isRevealed)
@@ -49,7 +55,11 @@ public class LightableBridge : Lightable
         else if (!isRevealed)
         {
             foreach (GameObject block in blocks) block.transform.localScale = Vector3.zero;
-            foreach (Collider lightDetector in lightDetectors) GetCrystalRenderer(lightDetector).material.SetColor("_EmissionColor", crystalBaseColor * 1);
+            foreach (Collider lightDetector in lightDetectors)
+            {
+                MeshRenderer[] crystals = GetCrystalRenderers(lightDetector);
+                foreach(MeshRenderer crystal in crystals) crystal.material.SetColor("_EmissionColor", crystalBaseColor * 1);
+            }
             currentIntensity = 1f;
         }
     }
@@ -90,7 +100,8 @@ public class LightableBridge : Lightable
             currentIntensity = Mathf.Lerp(startingIntensity, finalIntensity, currentGlowTime / finalGlowTime);
             foreach (Collider lightDetector in lightDetectors)
             {
-                GetCrystalRenderer(lightDetector).material.SetColor("_EmissionColor", crystalBaseColor * currentIntensity);
+                MeshRenderer[] crystals = GetCrystalRenderers(lightDetector);
+                foreach(MeshRenderer crystal in crystals) crystal.material.SetColor("_EmissionColor", crystalBaseColor * currentIntensity);
             }
             yield return null;
         }
