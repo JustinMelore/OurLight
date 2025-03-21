@@ -49,7 +49,8 @@ public class LightableBridge : Lightable
         else if (!isRevealed)
         {
             foreach (GameObject block in blocks) block.transform.localScale = Vector3.zero;
-            //TODO RESET EMISSION ON BRIDGES
+            foreach (Collider lightDetector in lightDetectors) GetCrystalRenderer(lightDetector).material.SetColor("_EmissionColor", crystalBaseColor * 1);
+            currentIntensity = 1f;
         }
     }
 
