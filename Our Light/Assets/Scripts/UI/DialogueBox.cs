@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using System.Collections.Generic;
 using TMPro;
 
@@ -22,8 +23,8 @@ public class DialogueBox : MonoBehaviour
 
     public void StartDialogue(string[] dialogueList)
     {
-        Cursor.lockState = CursorLockMode.None;
         gameObject.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(transform.Find("DialogueButton").gameObject);
         foreach(string dialogue in dialogueList) dialogueQueue.Enqueue(dialogue);
         boxDisplay.alpha = 1f;
         NextDialogue();
@@ -43,6 +44,6 @@ public class DialogueBox : MonoBehaviour
     {
         boxDisplay.alpha = 0f;
         gameObject.SetActive(false);
-        Cursor.lockState = CursorLockMode.Locked;
+        EventSystem.current.SetSelectedGameObject(null);
     }
 }

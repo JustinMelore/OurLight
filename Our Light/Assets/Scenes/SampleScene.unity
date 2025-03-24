@@ -5547,9 +5547,49 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3212042105037548989, guid: 57114ffb96c799f4a8f4344bbfb1c0b3, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3212042105037548989, guid: 57114ffb96c799f4a8f4344bbfb1c0b3, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0.99371064
+      objectReference: {fileID: 0}
+    - target: {fileID: 3212042105037548989, guid: 57114ffb96c799f4a8f4344bbfb1c0b3, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.99371064
+      objectReference: {fileID: 0}
+    - target: {fileID: 3212042105037548989, guid: 57114ffb96c799f4a8f4344bbfb1c0b3, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.99371064
+      objectReference: {fileID: 0}
+    - target: {fileID: 3212042105037548989, guid: 57114ffb96c799f4a8f4344bbfb1c0b3, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3212042105037548989, guid: 57114ffb96c799f4a8f4344bbfb1c0b3, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3212042105037548989, guid: 57114ffb96c799f4a8f4344bbfb1c0b3, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5220914445200202265, guid: 57114ffb96c799f4a8f4344bbfb1c0b3, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5338620957930499547, guid: 57114ffb96c799f4a8f4344bbfb1c0b3, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590417457891161913, guid: 57114ffb96c799f4a8f4344bbfb1c0b3, type: 3}
+      propertyPath: m_text
+      value: SPACE
+      objectReference: {fileID: 0}
+    - target: {fileID: 8046297178872553912, guid: 57114ffb96c799f4a8f4344bbfb1c0b3, type: 3}
+      propertyPath: m_Name
+      value: DialogueButton
       objectReference: {fileID: 0}
     - target: {fileID: 9051792845194675781, guid: 57114ffb96c799f4a8f4344bbfb1c0b3, type: 3}
       propertyPath: m_Pivot.x
