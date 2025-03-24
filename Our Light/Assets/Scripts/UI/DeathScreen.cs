@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -31,6 +32,7 @@ public class DeathScreen : MonoBehaviour
         respawnScreen.alpha = 0;
         respawnScreen.gameObject.SetActive(false);
         confirmationScreen.gameObject.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(confirmationScreen.gameObject.transform.Find("CancelQuitButton").gameObject);
         confirmationScreen.alpha = 1;
     }
 
@@ -38,6 +40,7 @@ public class DeathScreen : MonoBehaviour
     {
         confirmationScreen.alpha = 0;
         confirmationScreen.gameObject.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(respawnScreen.gameObject.transform.Find("RespawnButton").gameObject);
         respawnScreen.alpha = 1;
         respawnScreen.gameObject.SetActive(true);
     }
@@ -68,6 +71,7 @@ public class DeathScreen : MonoBehaviour
     private IEnumerator ShowDeathScreenRoutine(float fadeTime)
     {
         yield return StartCoroutine(Fade(1f, fadeTime));
+        EventSystem.current.SetSelectedGameObject(respawnScreen.gameObject.transform.Find("RespawnButton").gameObject);
         respawnScreen.alpha = 1f;
     }
 
@@ -79,6 +83,7 @@ public class DeathScreen : MonoBehaviour
     private IEnumerator HideDeathScreenRoutine(float fadeTime)
     {
         respawnScreen.alpha = 0f;
+        EventSystem.current.SetSelectedGameObject(null);
         yield return StartCoroutine(Fade(0f, fadeTime));
     }
 
