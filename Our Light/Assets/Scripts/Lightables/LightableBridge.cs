@@ -7,11 +7,11 @@ using UnityEngine;
 public class LightableBridge : Lightable
 {
     private List<GameObject> blocks;
+    private List<Vector3> blockScale;
     private Color crystalBaseColor;
     private float currentIntensity;
     private Coroutine glow;
     private Coroutine fade;
-    [SerializeField] private float blockScale;
     [SerializeField] private float blockScaleTime;
     [SerializeField] private float crystalGlowIntensity;
 
@@ -21,10 +21,12 @@ public class LightableBridge : Lightable
         base.Awake();
         specialModes.Add(LightMode.BRIDGE);
         blocks = new List<GameObject>();
+        blockScale = new List<Vector3>();
         Transform blocksContainer = transform.Find("Blocks");
         for (int i = 0; i < blocksContainer.childCount; i++)
         {
             blocks.Add(blocksContainer.GetChild(i).gameObject);
+            blockScale.Add(blocks[i].transform.localScale);
             blocks[i].transform.localScale = Vector3.zero;
         }
         crystalBaseColor = GetCrystalRenderers(lightDetectors[0])[0].material.GetColor("_EmissionColor");
@@ -47,9 +49,9 @@ public class LightableBridge : Lightable
         base.ChangeLightableState(isRevealed);
         if (isRevealed && playerLight.GetCurrentMode() == LightMode.BRIDGE)
         {
-            foreach (GameObject block in blocks)
+            for (int i = 0; i < blocks.Count; i++)
             {
-                Coroutine showDeathScreen = StartCoroutine(ScaleBlock(block));
+                Coroutine showDeathScreen = StartCoroutine(ScaleBlock(blocks[i], blockScale[i]));
             }
         }
         else if (!isRevealed)
@@ -64,14 +66,17 @@ public class LightableBridge : Lightable
         }
     }
 
-    private IEnumerator ScaleBlock(GameObject block)
+    private IEnumerator ScaleBlock(GameObject block, Vector3 scale)
     {
         float currentScaleTime = 0f;
-        while (block.transform.localScale.x < blockScale)
+        while (block.transform.localScale.x < scale.x)
         {
             currentScaleTime += Time.deltaTime;
-            float newScale = Mathf.Lerp(0f, blockScale, currentScaleTime / blockScaleTime);
-            block.transform.localScale = new Vector3(newScale, newScale, newScale);
+            Vector3 newScale = new Vector3();
+            newScale.x = Mathf.Lerp(0f, scale.x, currentScaleTime / blockScaleTime);
+            newScale.y = Mathf.Lerp(0f, scale.y, currentScaleTime / blockScaleTime);
+            newScale.z = Mathf.Lerp(0f, scale.z, currentScaleTime / blockScaleTime);
+            block.transform.localScale = newScale;
             yield return null;
         }
     }
