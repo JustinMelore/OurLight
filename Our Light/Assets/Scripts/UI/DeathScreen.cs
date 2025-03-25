@@ -25,6 +25,7 @@ public class DeathScreen : MonoBehaviour
     {
         FadeIn(1.5f);
         confirmationScreen.gameObject.SetActive(false);
+        respawnScreen.gameObject.SetActive(false);
     }
 
     private void SwitchToConfirmScreen()
@@ -72,6 +73,7 @@ public class DeathScreen : MonoBehaviour
     {
         yield return StartCoroutine(Fade(1f, fadeTime));
         EventSystem.current.SetSelectedGameObject(respawnScreen.gameObject.transform.Find("RespawnButton").gameObject);
+        respawnScreen.gameObject.SetActive(true);
         respawnScreen.alpha = 1f;
     }
 
@@ -83,6 +85,7 @@ public class DeathScreen : MonoBehaviour
     private IEnumerator HideDeathScreenRoutine(float fadeTime)
     {
         respawnScreen.alpha = 0f;
+        respawnScreen.gameObject.SetActive(false);
         EventSystem.current.SetSelectedGameObject(null);
         yield return StartCoroutine(Fade(0f, fadeTime));
     }
