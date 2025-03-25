@@ -122,52 +122,31 @@ public class LightableBridge : Lightable
 
     private IEnumerator ExpandBridge()
     {
-        //Transform bridge = revealable[0].transform;
-        //Vector3 bridgeDirection = bridge.rotation * bridge.forward;
-        //Debug.Log(bridgeDirection);
-        //float currentExpandTime = 0f;
-        //Vector3 originalScale = bridge.localScale;
+        Transform bridge = revealable[0].transform;
+        Vector3 bridgeDirection = bridge.rotation * transform.right;
+        float currentExpandTime = 0f;
+        Vector3 originalScale = bridge.localScale;
 
-        ////Debug.Log(bridge.localScale);
-        ////Debug.Log(bridgeDirection);
-        ////bridge.localScale = new Vector3(CalculateScaleDirection(bridge.localScale.x, (int)bridgeDirection.x), 
-        ////    CalculateScaleDirection(bridge.localScale.y, (int)bridgeDirection.y), CalculateScaleDirection(bridge.localScale.z, (int)bridgeDirection.z));
-        //bridge.localScale = new Vector3(CalculateScaleDirection(bridge.localScale.x, (int)bridgeDirection.x),
-        //   bridge.localScale.y, CalculateScaleDirection(bridge.localScale.z, (int)bridgeDirection.z));
-        //Vector3 startingScale = bridge.localScale;
-        ////Debug.Log(bridge.localScale);
+        bridge.localScale = new Vector3(CalculateScaleDirection(bridge.localScale.x, bridgeDirection.x),
+           bridge.localScale.y, CalculateScaleDirection(bridge.localScale.z, bridgeDirection.z));
+        Vector3 startingScale = bridge.localScale;
 
-        ////Debug.Log(bridge.position);
-        ////Debug.Log(bridgeDirection);
-        ////Debug.Log(bridge.localPosition.y);
-        ////bridge.position -= new Vector3(bridgeDirection.z, -bridgeDirection.y, bridgeDirection.x) * originalScale.magnitude / 2;
-        ////bridge.localPosition -= new Vector3(bridgeDirection.z, 0f, bridgeDirection.x) * originalScale.magnitude / 2;
-        ////bridge.position -= new Vector3(bridgeDirection.z, 0f, bridgeDirection.x) * originalScale.magnitude / 2;
-        //bridge.position += new Vector3(bridgeDirection.x, 0f, bridgeDirection.z) * originalScale.magnitude / 2;
-        ////Debug.Log(new Vector3(bridgeDirection.z, bridgeDirection.y, bridgeDirection.x) * originalScale.magnitude / 2);
+        bridge.Translate(Vector3.right * originalScale.x / 2, Space.Self);
 
-        //while (bridge.localScale.magnitude < originalScale.magnitude)
-        //{
-        //    currentExpandTime += Time.deltaTime;
-        //    float newX = Mathf.Lerp(startingScale.x, originalScale.x, currentExpandTime / bridgeRevealTime);
-        //    //float newY = Mathf.Lerp(startingScale.y, originalScale.y, currentExpandTime / bridgeRevealTime);
-        //    float newZ = Mathf.Lerp(startingScale.z, originalScale.z, currentExpandTime / bridgeRevealTime);
-        //    bridge.localScale = new Vector3(newX, originalScale.y, newZ);
-        //    //bridge.position += bridgeDirection * originalScale.magnitude / 2 * Time.deltaTime;
-        //    //bridge.position += new Vector3(bridgeDirection.z, -bridgeDirection.y, bridgeDirection.x) * originalScale.magnitude / 2 * Time.deltaTime;
-        //    //bridge.localPosition += new Vector3(bridgeDirection.z, 0f, bridgeDirection.x) * originalScale.magnitude / 2 * Time.deltaTime;
-        //    //bridge.position += new Vector3(bridgeDirection.z, 0f, bridgeDirection.x) * originalScale.magnitude / 2 * Time.deltaTime;
-        //    bridge.position -= new Vector3(bridgeDirection.x, 0f, bridgeDirection.z) * originalScale.magnitude / 2 * Time.deltaTime;
-        //    yield return null;
-        //}
+        while (bridge.localScale.magnitude < originalScale.magnitude)
+        {
+            currentExpandTime += Time.deltaTime;
+            float newX = Mathf.Lerp(startingScale.x, originalScale.x, currentExpandTime / bridgeRevealTime);
+            float newY = Mathf.Lerp(startingScale.y, originalScale.y, currentExpandTime / bridgeRevealTime);
+            float newZ = Mathf.Lerp(startingScale.z, originalScale.z, currentExpandTime / bridgeRevealTime);
+            bridge.localScale = new Vector3(newX, originalScale.y, newZ);
+            bridge.Translate(-Vector3.right * originalScale.x / 2 * Time.deltaTime, Space.Self);
+            yield return null;
+        }
     }
 
-    private float CalculateScaleDirection(float currentScale, int bridgeDirection)
+    private float CalculateScaleDirection(float currentScale, float bridgeDirection)
     {
-        //Debug.Log("Initial direction: "+ bridgeDirection);
-        //Debug.Log("Converted to inverted boolean: " + !Convert.ToBoolean(Math.Abs(bridgeDirection)));
-        //Debug.Log("Converted to int: " + Convert.ToInt32(!Convert.ToBoolean(Math.Abs(bridgeDirection))));
-        //Debug.Log("/////////////////////////////////");
-        return currentScale * Convert.ToInt32(!Convert.ToBoolean(bridgeDirection));
+        return currentScale * Convert.ToInt32(!Convert.ToBoolean(Math.Round(bridgeDirection, 5)));
     }
 }
