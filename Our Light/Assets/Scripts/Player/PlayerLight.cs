@@ -14,6 +14,7 @@ public class PlayerLight : MonoBehaviour
     private MeshCollider coneCollider;
     private bool isLightOn;
     private Light visualLight;
+    private Light ambientLight;
     private int lightStacks;
     private List<LightMode> unlockedModes;
     private int currentModeIndex;
@@ -84,6 +85,7 @@ public class PlayerLight : MonoBehaviour
     private void SetupVisualLight()
     {
         visualLight = GameObject.FindGameObjectWithTag("VisibleLight").GetComponent<Light>();
+        ambientLight = transform.parent.Find("Point Light").GetComponent<Light>();
         visualLight.range = distance + distance / 5;
         visualLight.spotAngle = angle;
         visualLight.innerSpotAngle = angle;
@@ -111,9 +113,11 @@ public class PlayerLight : MonoBehaviour
         {
             case LightMode.DEFAULT:
                 visualLight.color = new Color(1f, 233f / 255f, 0f);
+                ambientLight.color = new Color(1f, 233f / 255f, 0f);
                 break;
             case LightMode.BRIDGE:
                 visualLight.color = new Color(1f, 108f / 255f, 0f);
+                ambientLight.color = new Color(1f, 108f / 255f, 0f);
                 break;
         }
         //Debug.Log(visualLight.color);
