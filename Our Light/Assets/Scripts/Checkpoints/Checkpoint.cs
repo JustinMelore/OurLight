@@ -39,7 +39,6 @@ public class Checkpoint : MonoBehaviour
     private void OnTriggerEnter(UnityEngine.Collider other)
     {
         if (used) return;
-        Debug.Log("Checkpoint reached");
         respawnManager.SetRespawnPoint(respawnPoint);
         respawnManager.ClearUnsavedLightables();
         playerLight.ResetLight();
