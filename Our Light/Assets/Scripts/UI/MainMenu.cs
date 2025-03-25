@@ -3,14 +3,18 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    private void Start()
+    private IntroScreen introScreen;
+    
+    private void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        introScreen = FindFirstObjectByType<IntroScreen>(FindObjectsInactive.Include);
     }
 
     public void OnStart()
     {
-        SceneManager.LoadScene("Level1Test");
+        introScreen.gameObject.SetActive(true);
+        introScreen.ShowIntroScreen();
     }
 
     public void OnQuit()
