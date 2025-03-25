@@ -65,6 +65,7 @@ public class LightableBridge : Lightable
         else
         {
             foreach (GameObject block in blocks) block.transform.localScale = Vector3.zero;
+            revealable[0].GetComponent<MeshRenderer>().enabled = false;
             foreach (Collider lightDetector in lightDetectors)
             {
                 MeshRenderer[] crystals = GetCrystalRenderers(lightDetector);
@@ -122,6 +123,7 @@ public class LightableBridge : Lightable
 
     private IEnumerator ExpandBridge()
     {
+        revealable[0].GetComponent<MeshRenderer>().enabled = true;
         Transform bridge = revealable[0].transform;
         Vector3 bridgeDirection = bridge.rotation * transform.right;
         float currentExpandTime = 0f;
