@@ -35,7 +35,11 @@ public class Lightable : MonoBehaviour
         {
             Transform child = gameObject.transform.GetChild(i);
             if (child.tag == "LightDetector") lightDetectors.Add(child.GetComponent<Collider>());
-            else if (child.tag == "Revealable") revealable.Add(child.GameObject());
+            else if (child.tag == "Revealable")
+            {
+                revealable.Add(child.GameObject());
+                revealable[revealable.Count - 1].SetActive(false);
+            }
         }
         playerLight = FindFirstObjectByType<PlayerLight>();
         respawnManager = FindFirstObjectByType<RespawnManager>();
@@ -106,8 +110,9 @@ public class Lightable : MonoBehaviour
             lightDetector.enabled = !isRevealed;
         foreach (GameObject revealed in revealable)
         {
-            revealed.GetComponent<Collider>().enabled = isRevealed;
-            revealed.GetComponent<MeshRenderer>().enabled = isRevealed;
+            //revealed.GetComponent<Collider>().enabled = isRevealed;
+            //revealed.GetComponent<MeshRenderer>().enabled = isRevealed;
+            revealed.SetActive(true);
         }
         isLighted = false;
     }

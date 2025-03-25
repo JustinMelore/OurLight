@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -14,6 +15,7 @@ public class LightableBridge : Lightable
     private Coroutine fade;
     [SerializeField] private float blockScaleTime;
     [SerializeField] private float crystalGlowIntensity;
+    [SerializeField] private float bridgeRevealTime;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Awake()
@@ -47,14 +49,20 @@ public class LightableBridge : Lightable
     public override void ChangeLightableState(bool isRevealed)
     {
         base.ChangeLightableState(isRevealed);
-        if (isRevealed && playerLight.GetCurrentMode() == LightMode.BRIDGE)
+        if (isRevealed)
         {
-            for (int i = 0; i < blocks.Count; i++)
+            if(playerLight.GetCurrentMode() == LightMode.BRIDGE)
             {
-                Coroutine showDeathScreen = StartCoroutine(ScaleBlock(blocks[i], blockScale[i]));
+                for (int i = 0; i < blocks.Count; i++)
+                {
+                    Coroutine scaleBlock = StartCoroutine(ScaleBlock(blocks[i], blockScale[i]));
+                }
+            } else
+            {
+                Coroutine revealBridge = StartCoroutine(ExpandBridge());
             }
         }
-        else if (!isRevealed)
+        else
         {
             foreach (GameObject block in blocks) block.transform.localScale = Vector3.zero;
             foreach (Collider lightDetector in lightDetectors)
@@ -110,5 +118,41 @@ public class LightableBridge : Lightable
             }
             yield return null;
         }
+    }
+
+    private IEnumerator ExpandBridge()
+    {
+        Transform bridge = revealable[0].transform;
+        Vector3 bridgeDirection = bridge.forward;
+        float currentExpandTime = 0f;
+        Vector3 originalScale = bridge.localScale;
+
+        Debug.Log(bridge.localScale);
+        Debug.Log(bridgeDirection);
+        bridge.localScale = new Vector3(CalculateScaleDirection(bridge.localScale.x, bridgeDirection.x), 
+            CalculateScaleDirection(bridge.localScale.y, bridgeDirection.y), CalculateScaleDirection(bridge.localScale.z, bridgeDirection.z));
+        Vector3 startingScale = bridge.localScale;
+        Debug.Log(bridge.localScale);
+
+        bridge.position -= new Vector3(bridgeDirection.z, bridgeDirection.y, bridgeDirection.x) * originalScale.magnitude / 2;
+
+        while (bridge.localScale.magnitude < originalScale.magnitude)
+        {
+            currentExpandTime += Time.deltaTime;
+            float newX = Mathf.Lerp(startingScale.x, originalScale.x, currentExpandTime / bridgeRevealTime);
+            float newY = Mathf.Lerp(startingScale.y, originalScale.y, currentExpandTime / bridgeRevealTime);
+            float newZ = Mathf.Lerp(startingScale.z, originalScale.z, currentExpandTime / bridgeRevealTime);
+            bridge.localScale = new Vector3(newX, newY, newZ);
+            //bridge.position += bridgeDirection * originalScale.magnitude / 2 * Time.deltaTime;
+            bridge.position += new Vector3(bridgeDirection.z, bridgeDirection.y, bridgeDirection.x) * originalScale.magnitude / 2 * Time.deltaTime;
+            yield return null;
+        }
+    }
+
+    private float CalculateScaleDirection(float currentScale, float bridgeDirection)
+    {
+        //Debug.Log(bridgeDirection);
+        //Debug.Log(Convert.ToInt32(!Convert.ToBoolean(Math.Abs(bridgeDirection))));
+        return currentScale * Convert.ToInt32(!Convert.ToBoolean(Math.Abs(bridgeDirection)));
     }
 }

@@ -115,7 +115,7 @@ public class PlayerLight : MonoBehaviour
                 visualLight.color = new Color(1f, 108f / 255f, 0f);
                 break;
         }
-        Debug.Log(visualLight.color);
+        //Debug.Log(visualLight.color);
     }
 
     /// <summary>
@@ -141,7 +141,7 @@ public class PlayerLight : MonoBehaviour
             gameManager.KillPlayer();
         }
         lightUI.SetLightAmount(lightStacks);
-        Debug.Log("Light stack amount: " + lightStacks);
+        //Debug.Log("Light stack amount: " + lightStacks);
     }
 
     /// <summary>
@@ -151,7 +151,7 @@ public class PlayerLight : MonoBehaviour
     public void UnlockMode(LightMode unlockedMode)
     {
         unlockedModes.Add(unlockedMode);
-        Debug.Log(unlockedModes);
+        //Debug.Log(unlockedModes);
     }
 
     /// <summary>
