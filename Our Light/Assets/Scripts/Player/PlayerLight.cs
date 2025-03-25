@@ -94,6 +94,7 @@ public class PlayerLight : MonoBehaviour
     /// </summary>
     private void OnUseLight()
     {
+        if (!enabled) return;
         isLightOn = !isLightOn;
         coneCollider.enabled = isLightOn;
         visualLight.enabled = isLightOn;
@@ -123,8 +124,16 @@ public class PlayerLight : MonoBehaviour
     /// </summary>
     public void ResetLight()
     {
-        if (isLightOn) OnUseLight();
+        TurnOffLight();
         AddLightStack(lightStackMax);
+    }
+
+    /// <summary>
+    /// If the player's light is currently on, turn it off, otherwise do nothing
+    /// </summary>
+    public void TurnOffLight()
+    {
+        if (isLightOn) OnUseLight();
     }
     
     /// <summary>
