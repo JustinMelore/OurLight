@@ -1,21 +1,18 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
+using Image = UnityEngine.UI.Image;
 
 public class LightIndicator : MonoBehaviour
 {
+    [SerializeField] private Image lightIcon;
+    [SerializeField] Sprite[] icons = new Sprite[6];
 
-    //THIS IS ONLY TEMPORARY. WILL DELETE ONCE PROPER UI ASSET IS MADE
-    [SerializeField] private int lightMax;
-    private Slider lightSlider;
-
-    void Start()
-    {
-        lightSlider = GetComponent<Slider>();
-    }
 
     public void SetLightAmount(int currentLight)
     {
-        float lightPercentage = (float)currentLight / (float)lightMax;
-        lightSlider.value = lightPercentage;
+        if (currentLight < 1) currentLight = 1;
+        else if (currentLight > 6) currentLight = 6;
+        lightIcon.sprite = icons[currentLight - 1];
     }
 }
