@@ -4557,8 +4557,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 606317202}
   m_Mesh: {fileID: -3538676181632097610, guid: 8478352010f2b1d47a35252099c7e7dd, type: 3}
-<<<<<<< HEAD
-=======
 --- !u!64 &606317205
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4653,7 +4651,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 618053247}
   m_CullTransparentMesh: 1
->>>>>>> main
 --- !u!1001 &625281503
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8901,9 +8898,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4055577172580508601, guid: 57114ffb96c799f4a8f4344bbfb1c0b3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 618053248}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57114ffb96c799f4a8f4344bbfb1c0b3, type: 3}
+--- !u!224 &1036657844 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4055577172580508601, guid: 57114ffb96c799f4a8f4344bbfb1c0b3, type: 3}
+  m_PrefabInstance: {fileID: 1036657843}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1051864027
 GameObject:
   m_ObjectHideFlags: 0
