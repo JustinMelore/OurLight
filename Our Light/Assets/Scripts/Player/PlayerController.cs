@@ -85,6 +85,6 @@ public class PlayerController : MonoBehaviour
     //FOR TESTING PURPOSES, WILL EVENTUALLY BE REMOVED
     private void OnReset()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("MainMenu");
     }
 }
