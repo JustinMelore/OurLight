@@ -49,6 +49,10 @@ public class PlayerController : MonoBehaviour
         playerVelocity.z = -inputVector.x * moveSpeed;
     }
 
+    private void OnDisable()
+    {
+        animator.SetFloat("Speed", 0f);
+    }
 
     // Update is called once per frame
     void Update()
