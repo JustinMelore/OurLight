@@ -2845,7 +2845,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8913312690823956997, guid: c8d24ad79f9ec1b49a4e9d6660ef94c9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.47
+      value: -1.95
       objectReference: {fileID: 0}
     - target: {fileID: 8913312690823956997, guid: c8d24ad79f9ec1b49a4e9d6660ef94c9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4425,7 +4425,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8349257920049848297, guid: 733ec220179fd9c439f2bf3b254b0773, type: 3}
       propertyPath: m_Name
-      value: DialogueTrigger (1)
+      value: DialogueTrigger ChildAcquired
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19592,11 +19592,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1460848762947596782, guid: 733ec220179fd9c439f2bf3b254b0773, type: 3}
       propertyPath: 'dialogueList.Array.data[0]'
-      value: Oh! I can help here!
+      value: 'Child: Oh! I can help here!'
       objectReference: {fileID: 0}
     - target: {fileID: 1460848762947596782, guid: 733ec220179fd9c439f2bf3b254b0773, type: 3}
       propertyPath: 'dialogueList.Array.data[1]'
-      value: You won't have to share as much.
+      value: 'Child: You won''t have to share as much.'
       objectReference: {fileID: 0}
     - target: {fileID: 1460848762947596782, guid: 733ec220179fd9c439f2bf3b254b0773, type: 3}
       propertyPath: 'dialogueList.Array.data[2]'
@@ -19644,7 +19644,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8349257920049848297, guid: 733ec220179fd9c439f2bf3b254b0773, type: 3}
       propertyPath: m_Name
-      value: DialogueTrigger
+      value: DialogueTrigger Bridge
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
