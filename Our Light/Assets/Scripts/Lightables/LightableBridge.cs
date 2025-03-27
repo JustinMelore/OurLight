@@ -35,13 +35,14 @@ public class LightableBridge : Lightable
         currentIntensity = 1f;
     }
 
+    //TODO Rework to work with single mesh renderer
     private MeshRenderer[] GetCrystalRenderers(Collider lightDetector)
     {
-        Transform crystalContainer = lightDetector.transform.GetChild(0).GetChild(0);
+        Transform crystalContainer = lightDetector.transform.GetChild(0);
         MeshRenderer[] crystals = new MeshRenderer[crystalContainer.childCount];
         for (int i = 0; i < crystals.Length; i++)
         {
-            crystals[i] = crystalContainer.GetChild(i).GetComponent<MeshRenderer>();
+            crystals[i] = crystalContainer.GetComponent<MeshRenderer>();
         }
         return crystals;
     }
