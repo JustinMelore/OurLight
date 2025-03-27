@@ -20,7 +20,7 @@ public class DialogueTrigger : MonoBehaviour
     {
         if ((other.gameObject.layer != 6 && other.gameObject.layer != 9) 
             || hasSpoken 
-            || playerLight.HasUnlockedMode((LightMode)requiredMode)) return;
+            || !playerLight.HasUnlockedMode((LightMode)requiredMode)) return;
         dialogueBox.StartDialogue(dialogueList);
         hasSpoken = true;
     }
