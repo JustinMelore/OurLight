@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private PlayerInput playerInput;
     private CharacterController characterController;
     private GameManager gameManager;
+    private Animator animator;
 
     private float gravity = -9.81f;
     private float moveSpeed = 5f;
@@ -24,12 +25,13 @@ public class PlayerController : MonoBehaviour
     private float requiredButtonPressTime;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         playerInput = new PlayerInput();
         characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         gameManager = FindFirstObjectByType<GameManager>();
+        animator = GetComponentInChildren<Animator>();
         requiredButtonPressTime = 0.03f;
         buttonPressedTime = 0f;
     }
@@ -47,6 +49,10 @@ public class PlayerController : MonoBehaviour
         playerVelocity.z = -inputVector.x * moveSpeed;
     }
 
+    private void OnDisable()
+    {
+        animator.SetFloat("Speed", 0f);
+    }
 
     // Update is called once per frame
     void Update()
@@ -54,11 +60,14 @@ public class PlayerController : MonoBehaviour
         if (characterController.isGrounded && playerVelocity.y < 0) playerVelocity.y = -2f;
         playerVelocity.y += gravity * Time.deltaTime;
         buttonPressedTime += Time.deltaTime;
-        if(buttonPressedTime >= requiredButtonPressTime && inputVector != Vector3.zero)
+        if (inputVector != Vector3.zero) animator.SetFloat("Speed", 1);
+        else animator.SetFloat("Speed", 0);
+        if (buttonPressedTime >= requiredButtonPressTime && inputVector != Vector3.zero)
         {
             characterController.Move(playerVelocity * Time.deltaTime);
             transform.rotation = Quaternion.LookRotation(inputVector);
-        } else
+        }
+        else
         {
             characterController.Move(new Vector3(0, playerVelocity.y, 0) * Time.deltaTime);
         }
@@ -76,6 +85,6 @@ public class PlayerController : MonoBehaviour
     //FOR TESTING PURPOSES, WILL EVENTUALLY BE REMOVED
     private void OnReset()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("MainMenu");
     }
 }

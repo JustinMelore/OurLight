@@ -2533,10 +2533,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1497405600577791772, guid: fd5f995ec2790314ba10d01e2d8ed932, type: 3}
-      propertyPath: lightStackMax
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 5169711824665410021, guid: fd5f995ec2790314ba10d01e2d8ed932, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2547,7 +2543,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7049796001267054698, guid: fd5f995ec2790314ba10d01e2d8ed932, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.38
+      value: 2.027
       objectReference: {fileID: 0}
     - target: {fileID: 7049796001267054698, guid: fd5f995ec2790314ba10d01e2d8ed932, type: 3}
       propertyPath: m_LocalPosition.z
