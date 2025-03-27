@@ -174,4 +174,14 @@ public class PlayerLight : MonoBehaviour
     {
         return unlockedModes[currentModeIndex];
     }
+
+    /// <summary>
+    /// Checks to see if the player has unlocked the given mode
+    /// </summary>
+    /// <param name="mode">The LightMode to be checked for</param>
+    /// <returns></returns>
+    public bool HasUnlockedMode(LightMode mode)
+    {
+        return unlockedModes.Contains(mode);
+    }
 }
