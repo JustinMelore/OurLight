@@ -4343,6 +4343,95 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9159879105384946134, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
   m_PrefabInstance: {fileID: 168782827}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &481015317
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1460848762947596782, guid: 733ec220179fd9c439f2bf3b254b0773, type: 3}
+      propertyPath: requiredMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1460848762947596782, guid: 733ec220179fd9c439f2bf3b254b0773, type: 3}
+      propertyPath: dialogueList.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1460848762947596782, guid: 733ec220179fd9c439f2bf3b254b0773, type: 3}
+      propertyPath: 'dialogueList.Array.data[0]'
+      value: 'Child: You''ll help me look?'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1460848762947596782, guid: 733ec220179fd9c439f2bf3b254b0773, type: 3}
+      propertyPath: 'dialogueList.Array.data[1]'
+      value: 'Child: Yay!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1460848762947596782, guid: 733ec220179fd9c439f2bf3b254b0773, type: 3}
+      propertyPath: 'dialogueList.Array.data[2]'
+      value: 'Child: I like playing with my blocks.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1460848762947596782, guid: 733ec220179fd9c439f2bf3b254b0773, type: 3}
+      propertyPath: 'dialogueList.Array.data[3]'
+      value: (The child joined you)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254612927554271087, guid: 733ec220179fd9c439f2bf3b254b0773, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5328660331431605718, guid: 733ec220179fd9c439f2bf3b254b0773, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7395344329616978028, guid: 733ec220179fd9c439f2bf3b254b0773, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 7395344329616978028, guid: 733ec220179fd9c439f2bf3b254b0773, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 7395344329616978028, guid: 733ec220179fd9c439f2bf3b254b0773, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 59.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 7395344329616978028, guid: 733ec220179fd9c439f2bf3b254b0773, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7395344329616978028, guid: 733ec220179fd9c439f2bf3b254b0773, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7395344329616978028, guid: 733ec220179fd9c439f2bf3b254b0773, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7395344329616978028, guid: 733ec220179fd9c439f2bf3b254b0773, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7395344329616978028, guid: 733ec220179fd9c439f2bf3b254b0773, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7395344329616978028, guid: 733ec220179fd9c439f2bf3b254b0773, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7395344329616978028, guid: 733ec220179fd9c439f2bf3b254b0773, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8349257920049848297, guid: 733ec220179fd9c439f2bf3b254b0773, type: 3}
+      propertyPath: m_Name
+      value: DialogueTrigger (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 733ec220179fd9c439f2bf3b254b0773, type: 3}
 --- !u!1001 &494755517
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10005,15 +10094,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6454129882499504630, guid: ae40ab0677dd57a4cb5ed42fcf3cc0c8, type: 3}
       propertyPath: 'dialogueList.Array.data[0]'
-      value: I can't find my friends.
+      value: 'Child: I can''t find my friends.'
       objectReference: {fileID: 0}
     - target: {fileID: 6454129882499504630, guid: ae40ab0677dd57a4cb5ed42fcf3cc0c8, type: 3}
       propertyPath: 'dialogueList.Array.data[1]'
-      value: I've had to p-p-p-play by myself.
+      value: 'Child: I''ve had to p-p-p-play by myself.'
       objectReference: {fileID: 0}
     - target: {fileID: 6454129882499504630, guid: ae40ab0677dd57a4cb5ed42fcf3cc0c8, type: 3}
       propertyPath: 'dialogueList.Array.data[2]'
-      value: Can you h-help me find them?
+      value: 'Child: Can you h-help me find them?'
       objectReference: {fileID: 0}
     - target: {fileID: 6454129882499504630, guid: ae40ab0677dd57a4cb5ed42fcf3cc0c8, type: 3}
       propertyPath: 'dialogueList.Array.data[3]'
@@ -19583,4 +19672,5 @@ SceneRoots:
   - {fileID: 11524797}
   - {fileID: 1362402193}
   - {fileID: 7822907853056803775}
+  - {fileID: 481015317}
   - {fileID: 276478450}

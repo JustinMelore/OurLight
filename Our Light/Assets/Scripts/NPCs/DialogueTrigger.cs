@@ -16,7 +16,7 @@ public class DialogueTrigger : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if ((other.gameObject.layer != 6 && other.gameObject.layer != 9) 
             || hasSpoken 
