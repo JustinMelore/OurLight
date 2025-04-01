@@ -10822,7 +10822,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8467152402938868558, guid: 69f00f493caea0748980391a5231be79, type: 3}
       propertyPath: m_text
-      value: Lamposts act as checkpoints
+      value: 'Lamposts act as checkpoints
+
+        and restore your light'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11204,6 +11206,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: -2707234901732145418, guid: 727bf6e0a883d0f4489efcd2215a5fb8, type: 3}
+    - target: {fileID: 6642853431450251784, guid: fd5f995ec2790314ba10d01e2d8ed932, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7049796001267054698, guid: fd5f995ec2790314ba10d01e2d8ed932, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.01
