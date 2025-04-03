@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class LightableBridge : Lightable
 {
@@ -13,6 +14,9 @@ public class LightableBridge : Lightable
     private float currentIntensity;
     private Coroutine glow;
     private Coroutine fade;
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip playerLightRevealSound;
+    [SerializeField] private AudioClip npcLightRevealSound;
     [SerializeField] private float blockScaleTime;
     [SerializeField] private float crystalGlowIntensity;
     [SerializeField] private float bridgeRevealTime;
@@ -25,6 +29,7 @@ public class LightableBridge : Lightable
         blocks = new List<GameObject>();
         blockScale = new List<Vector3>();
         Transform blocksContainer = transform.Find("Blocks");
+        audioSource = GetComponent<AudioSource>();
         for (int i = 0; i < blocksContainer.childCount; i++)
         {
             blocks.Add(blocksContainer.GetChild(i).gameObject);
@@ -54,12 +59,16 @@ public class LightableBridge : Lightable
         {
             if(playerLight.GetCurrentMode() == LightMode.BRIDGE)
             {
+                audioSource.pitch = Random.Range(0.6f, 1f);
+                audioSource.PlayOneShot(npcLightRevealSound);
                 for (int i = 0; i < blocks.Count; i++)
                 {
                     Coroutine scaleBlock = StartCoroutine(ScaleBlock(blocks[i], blockScale[i]));
                 }
             } else
             {
+                audioSource.pitch = Random.Range(0.8f, 1.2f);
+                audioSource.PlayOneShot(playerLightRevealSound);
                 Coroutine revealBridge = StartCoroutine(ExpandBridge());
             }
         }
