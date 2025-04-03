@@ -112,7 +112,7 @@ public class Lightable : MonoBehaviour
         {
             //revealed.GetComponent<Collider>().enabled = isRevealed;
             //revealed.GetComponent<MeshRenderer>().enabled = isRevealed;
-            revealed.SetActive(true);
+            revealed.SetActive(isRevealed);
         }
         isLighted = false;
     }
