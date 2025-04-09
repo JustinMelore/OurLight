@@ -154,7 +154,7 @@ public class PlayerLight : MonoBehaviour
             gameManager.KillPlayer();
         }
         lightUI.SetLightAmount(lightStacks);
-        //Debug.Log("Light stack amount: " + lightStacks);
+        Debug.Log("Light stack amount: " + lightStacks);
     }
 
     /// <summary>

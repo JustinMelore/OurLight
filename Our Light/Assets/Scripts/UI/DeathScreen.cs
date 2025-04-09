@@ -72,6 +72,7 @@ public class DeathScreen : MonoBehaviour
     private IEnumerator ShowDeathScreenRoutine(float fadeTime)
     {
         yield return StartCoroutine(Fade(1f, fadeTime));
+        Cursor.lockState = CursorLockMode.None;
         EventSystem.current.SetSelectedGameObject(respawnScreen.gameObject.transform.Find("RespawnButton").gameObject);
         respawnScreen.gameObject.SetActive(true);
         respawnScreen.alpha = 1f;
@@ -87,6 +88,7 @@ public class DeathScreen : MonoBehaviour
         respawnScreen.alpha = 0f;
         respawnScreen.gameObject.SetActive(false);
         EventSystem.current.SetSelectedGameObject(null);
+        Cursor.lockState = CursorLockMode.Locked;
         yield return StartCoroutine(Fade(0f, fadeTime));
     }
 
