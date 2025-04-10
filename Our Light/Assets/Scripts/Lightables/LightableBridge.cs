@@ -15,6 +15,7 @@ public class LightableBridge : Lightable
     private Coroutine glow;
     private Coroutine fade;
     private AudioSource audioSource;
+    private float startingVolume;
     [SerializeField] private AudioClip playerLightRevealSound;
     [SerializeField] private AudioClip npcLightRevealSound;
     [SerializeField] private float blockScaleTime;
@@ -30,6 +31,7 @@ public class LightableBridge : Lightable
         blockScale = new List<Vector3>();
         Transform blocksContainer = transform.Find("Blocks");
         audioSource = GetComponent<AudioSource>();
+        startingVolume = audioSource.volume;
         for (int i = 0; i < blocksContainer.childCount; i++)
         {
             blocks.Add(blocksContainer.GetChild(i).gameObject);
@@ -59,16 +61,20 @@ public class LightableBridge : Lightable
         {
             if(playerLight.GetCurrentMode() == LightMode.BRIDGE)
             {
-                audioSource.pitch = Random.Range(0.6f, 1f);
-                audioSource.PlayOneShot(npcLightRevealSound);
+                //audioSource.pitch = Random.Range(0.6f, 1f);
+                //audioSource.volume = startingVolume;
+                //audioSource.PlayOneShot(npcLightRevealSound);
+                PlaySound(npcLightRevealSound);
                 for (int i = 0; i < blocks.Count; i++)
                 {
                     Coroutine scaleBlock = StartCoroutine(ScaleBlock(blocks[i], blockScale[i]));
                 }
             } else
             {
-                audioSource.pitch = Random.Range(0.8f, 1.2f);
-                audioSource.PlayOneShot(playerLightRevealSound);
+                //audioSource.pitch = Random.Range(0.8f, 1.2f);
+                //audioSource.volume = startingVolume;
+                //audioSource.PlayOneShot(playerLightRevealSound);
+                PlaySound(playerLightRevealSound);
                 Coroutine revealBridge = StartCoroutine(ExpandBridge());
             }
         }
@@ -160,5 +166,26 @@ public class LightableBridge : Lightable
     private float CalculateScaleDirection(float currentScale, float bridgeDirection)
     {
         return currentScale * Convert.ToInt32(!Convert.ToBoolean(Math.Round(bridgeDirection, 5)));
+    }
+
+    private void PlaySound(AudioClip sound)
+    {
+        audioSource.pitch = Random.Range(0.6f, 1f);
+        audioSource.volume = startingVolume;
+        audioSource.PlayOneShot(sound);
+        StartCoroutine(FadeSound(sound));
+    }
+
+    private IEnumerator FadeSound(AudioClip sound)
+    {
+        //float halfwayPoint = sound.length / 2;
+        float currentAudioTime = 0f;
+        while(audioSource.volume != 0)
+        {
+            currentAudioTime += Time.deltaTime;
+            //if (currentAudioTime < halfwayPoint) yield return null;
+            audioSource.volume = Mathf.Lerp(startingVolume, 0, currentAudioTime / sound.length);
+            yield return null;
+        }
     }
 }
