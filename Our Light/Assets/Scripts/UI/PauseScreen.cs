@@ -29,7 +29,7 @@ public class PauseScreen : MonoBehaviour
         gameObject.SetActive(true);
         canvasGroup.alpha = 1f;
         Cursor.lockState = CursorLockMode.None;
-        EventSystem.current.SetSelectedGameObject(resumeButton);
+        TogglePauseScreen();
     }
 
     public void HidePauseScreen()
