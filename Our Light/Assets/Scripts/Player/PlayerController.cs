@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private CharacterController characterController;
     private GameManager gameManager;
     private Animator animator;
+    private PauseScreen pauseScreen;
 
     private float gravity = -9.81f;
     private float moveSpeed = 5f;
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         gameManager = FindFirstObjectByType<GameManager>();
+        pauseScreen = FindFirstObjectByType<PauseScreen>(FindObjectsInactive.Include);
         animator = GetComponentInChildren<Animator>();
         requiredButtonPressTime = 0.03f;
         buttonPressedTime = 0f;
@@ -82,9 +84,10 @@ public class PlayerController : MonoBehaviour
         transform.position = FindFirstObjectByType<RespawnManager>().GetRespawnPoint();
     }
 
-    //FOR TESTING PURPOSES, WILL EVENTUALLY BE REMOVED
     private void OnReset()
     {
-        SceneManager.LoadScene("MainMenu");
+        if (!enabled && !pauseScreen.gameObject.activeSelf) return;
+        if (!pauseScreen.gameObject.activeSelf) pauseScreen.ShowPauseScreen();
+        else pauseScreen.HidePauseScreen();
     }
 }

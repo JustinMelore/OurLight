@@ -104,6 +104,7 @@ public class PlayerLight : MonoBehaviour
 
     private void OnSwitchMode(InputValue inputValue)
     {
+        if (!enabled) return;
         var scrollInput = inputValue.Get();
         if (scrollInput == null || unlockedModes.Count == 1) return;
         currentModeIndex += (int)(Single)scrollInput;

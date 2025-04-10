@@ -12,12 +12,14 @@ public class GameManager : MonoBehaviour
     private PlayerController player;
     private PlayerLight playerLight;
     private DeathScreen deathScreen;
+    private PauseScreen pauseScreen;
 
     private void Awake()
     {
         respawnManager = FindFirstObjectByType<RespawnManager>();
         mainCamera = FindFirstObjectByType<CameraMovement>();
         deathScreen = FindFirstObjectByType<DeathScreen>();
+        pauseScreen = FindFirstObjectByType<PauseScreen>(FindObjectsInactive.Include);
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         playerLight = player.gameObject.transform.GetComponentInChildren<PlayerLight>();
     }
@@ -27,6 +29,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void KillPlayer()
     {
+        pauseScreen.HidePauseScreen();
         player.enabled = false;
         playerLight.enabled = false;
         deathScreen.gameObject.SetActive(true);
