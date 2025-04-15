@@ -22,6 +22,7 @@ public class EndScreen : MonoBehaviour
 
     public void ShowEndingScreen()
     {
+        gameObject.SetActive(true);
         fade.gameObject.SetActive(true);
         StartCoroutine(ShowEndScreenCoroutine());
     }

@@ -2193,9 +2193,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   endButton: {fileID: 7997290554850786407}
   fade: {fileID: 821248610985077618}
-  fadeTime: 0
-  textRevealTime: 0
-  buttonRevealTime: 0
+  fadeTime: 0.75
+  textRevealTime: 10
+  buttonRevealTime: 1
 --- !u!1 &3759901996057837371
 GameObject:
   m_ObjectHideFlags: 0
@@ -3739,7 +3739,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5386743637125946774}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
