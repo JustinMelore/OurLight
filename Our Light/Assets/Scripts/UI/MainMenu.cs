@@ -8,6 +8,7 @@ public class MainMenu : MonoBehaviour
     private void Awake()
     {
         introScreen = FindFirstObjectByType<IntroScreen>(FindObjectsInactive.Include);
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void OnStart()
