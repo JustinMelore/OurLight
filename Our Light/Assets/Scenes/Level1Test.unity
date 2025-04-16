@@ -9727,7 +9727,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 379613989}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -24053,7 +24053,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4514132196831745454, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
       propertyPath: m_LocalScale.x
-      value: 10.730027
+      value: 12.077719
       objectReference: {fileID: 0}
     - target: {fileID: 4514132196831745454, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
       propertyPath: m_LocalScale.z
@@ -24061,11 +24061,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4514132196831745454, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 25.71
+      value: 26.29
       objectReference: {fileID: 0}
     - target: {fileID: 4514132196831745454, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.37
       objectReference: {fileID: 0}
     - target: {fileID: 4610383195581979053, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
       propertyPath: lightCost
@@ -24133,7 +24133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9159879105384946134, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.4471162
+      value: 0.50327396
       objectReference: {fileID: 0}
     - target: {fileID: 9159879105384946134, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
       propertyPath: m_LocalScale.z
@@ -24141,11 +24141,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9159879105384946134, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.14
+      value: 16.64
       objectReference: {fileID: 0}
     - target: {fileID: 9159879105384946134, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.03
+      value: 0.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -50567,7 +50567,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6454129882499504630, guid: ae40ab0677dd57a4cb5ed42fcf3cc0c8, type: 3}
       propertyPath: 'dialogueList.Array.data[1]'
-      value: 'Patrick McHenry: Producer/Sound/Music'
+      value: 'Patrick McHenry: Producer/Sound/Music/Writing'
       objectReference: {fileID: 0}
     - target: {fileID: 6454129882499504630, guid: ae40ab0677dd57a4cb5ed42fcf3cc0c8, type: 3}
       propertyPath: 'dialogueList.Array.data[2]'
@@ -50575,7 +50575,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6454129882499504630, guid: ae40ab0677dd57a4cb5ed42fcf3cc0c8, type: 3}
       propertyPath: 'dialogueList.Array.data[3]'
-      value: 'Kara Howard: Character/Environment Art + Design'
+      value: 'Kara Howard: Character/Environment/UI Art + Design'
       objectReference: {fileID: 0}
     - target: {fileID: 6454129882499504630, guid: ae40ab0677dd57a4cb5ed42fcf3cc0c8, type: 3}
       propertyPath: 'dialogueList.Array.data[4]'
