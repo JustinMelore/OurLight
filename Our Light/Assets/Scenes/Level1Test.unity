@@ -24021,11 +24021,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1471273363959920854, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 31.835
+      value: 32.54
       objectReference: {fileID: 0}
     - target: {fileID: 1471273363959920854, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.364
+      value: 2.29
       objectReference: {fileID: 0}
     - target: {fileID: 1471273363959920854, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -24130,14 +24130,6 @@ PrefabInstance:
     - target: {fileID: 6784850340555974194, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
       propertyPath: m_Name
       value: LightableBridge (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7989361407052562708, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.126
-      objectReference: {fileID: 0}
-    - target: {fileID: 7989361407052562708, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.944
       objectReference: {fileID: 0}
     - target: {fileID: 9159879105384946134, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
       propertyPath: m_LocalScale.x
@@ -31161,7 +31153,7 @@ Transform:
   m_GameObject: {fileID: 1131228396}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17.15, y: 1.14, z: 12.71}
+  m_LocalPosition: {x: -17.15, y: 1.14, z: 13.162}
   m_LocalScale: {x: 1.5, y: 1.3164899, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -41694,11 +41686,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1471273363959920854, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21.726
+      value: 21.518
       objectReference: {fileID: 0}
     - target: {fileID: 1471273363959920854, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.66
+      value: 1.406
       objectReference: {fileID: 0}
     - target: {fileID: 1471273363959920854, guid: dc9e7815be1bc4147b4d976faa10ebeb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -61258,7 +61250,7 @@ Transform:
   m_GameObject: {fileID: 2111135308}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -15.89, y: 0.706, z: 13.27}
+  m_LocalPosition: {x: -15.686, y: 0.706, z: 13.27}
   m_LocalScale: {x: 0.5, y: 0.43882996, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
