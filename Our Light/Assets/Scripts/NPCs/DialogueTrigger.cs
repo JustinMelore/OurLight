@@ -4,6 +4,7 @@ public class DialogueTrigger : MonoBehaviour
 {
     [SerializeField] private string[] dialogueList;
     [SerializeField] private LightMode requiredMode;
+    [SerializeField] private bool showIcon = false;
     private PlayerLight playerLight;
     private DialogueBox dialogueBox;
     private bool hasSpoken;
@@ -21,7 +22,7 @@ public class DialogueTrigger : MonoBehaviour
         if ((other.gameObject.layer != 6 && other.gameObject.layer != 9) 
             || hasSpoken 
             || !playerLight.HasUnlockedMode((LightMode)requiredMode)) return;
-        dialogueBox.StartDialogue(dialogueList);
+        dialogueBox.StartDialogue(dialogueList, showIcon);
         hasSpoken = true;
     }
 }
