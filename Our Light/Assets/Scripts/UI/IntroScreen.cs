@@ -4,6 +4,9 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/// <summary>
+/// Handles the behavior for the intro screen
+/// </summary>
 public class IntroScreen : MonoBehaviour
 {
     private CanvasGroup[] introText;
@@ -16,22 +19,27 @@ public class IntroScreen : MonoBehaviour
     void Awake()
     {
         fade = transform.parent.Find("Fade").GetComponent<CanvasGroup>();
-        //introText = transform.Find("IntroText").GetComponent<CanvasGroup>();
         introText = transform.Find("IntroText").GetComponentsInChildren<CanvasGroup>();
         startButton = transform.Find("StartButton").GetComponent<CanvasGroup>();
     }
 
+    /// <summary>
+    /// Fades in the intro screen and slowly reveals the opening poem text
+    /// </summary>
     public void ShowIntroScreen()
     {
         fade.gameObject.SetActive(true);
         StartCoroutine(ShowIntroScreenCoroutine());
     }
 
+    /// <summary>
+    /// Coroutine that fades in the intro screen's background and slowly reveals the intro text
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator ShowIntroScreenCoroutine()
     {
         yield return StartCoroutine(FadeInCanvasGroup(fade, fadeTime));
         float individualLineReveal = textRevealTime / introText.Length;
-        //yield return StartCoroutine(FadeInCanvasGroup(introText, textRevealTime));
         foreach (CanvasGroup line in introText) yield return StartCoroutine(FadeInCanvasGroup(line, individualLineReveal));
         yield return new WaitForSeconds(buttonRevealTime);
         startButton.gameObject.SetActive(true);
@@ -39,6 +47,12 @@ public class IntroScreen : MonoBehaviour
         startButton.alpha = 1f;
     }
 
+    /// <summary>
+    /// Fades in a selected CanvasGroup over a given duration
+    /// </summary>
+    /// <param name="group">The CanvasGroup being faded in</param>
+    /// <param name="neededFadeTime">How long it should take for the CanvasGroup to fade in</param>
+    /// <returns></returns>
     private IEnumerator FadeInCanvasGroup(CanvasGroup group, float neededFadeTime)
     {
         float currentFadeTime = 0f;
@@ -50,6 +64,9 @@ public class IntroScreen : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Triggers when the start button is clicked. Loads the game level
+    /// </summary>
     public void OnStart()
     {
         SceneManager.LoadScene("Level1Test");
