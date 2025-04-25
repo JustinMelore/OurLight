@@ -23572,6 +23572,10 @@ PrefabInstance:
       propertyPath: ShapeModule.m_Scale.x
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 4087450256600826214, guid: 50b5a3e1d66430643a92357b14cc0261, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 20.267239
+      objectReference: {fileID: 0}
     - target: {fileID: 4763413977900421642, guid: 50b5a3e1d66430643a92357b14cc0261, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.08
@@ -51886,6 +51890,10 @@ PrefabInstance:
     - target: {fileID: 1390332836638690378, guid: 50b5a3e1d66430643a92357b14cc0261, type: 3}
       propertyPath: m_Name
       value: LightableFog
+      objectReference: {fileID: 0}
+    - target: {fileID: 4087450256600826214, guid: 50b5a3e1d66430643a92357b14cc0261, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 13.433377
       objectReference: {fileID: 0}
     - target: {fileID: 4763413977900421642, guid: 50b5a3e1d66430643a92357b14cc0261, type: 3}
       propertyPath: m_LocalPosition.y
