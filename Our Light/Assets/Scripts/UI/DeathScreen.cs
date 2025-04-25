@@ -4,6 +4,9 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/// <summary>
+/// Handles the behavior of the death screen that pops up when the player falls out of the world or runs out of light
+/// </summary>
 public class DeathScreen : MonoBehaviour
 {
     private RawImage fade;
@@ -28,6 +31,9 @@ public class DeathScreen : MonoBehaviour
         respawnScreen.gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// Switches the death screen to the quit confirmation screen
+    /// </summary>
     private void SwitchToConfirmScreen()
     {
         respawnScreen.alpha = 0;
@@ -37,6 +43,9 @@ public class DeathScreen : MonoBehaviour
         confirmationScreen.alpha = 1;
     }
 
+    /// <summary>
+    /// Switches the quit confirmation screen to the death screen
+    /// </summary>
     private void SwitchToRespawnScreen()
     {
         confirmationScreen.alpha = 0;
@@ -46,6 +55,12 @@ public class DeathScreen : MonoBehaviour
         respawnScreen.gameObject.SetActive(true);
     }
 
+    /// <summary>
+    /// Fades the game screen in or out
+    /// </summary>
+    /// <param name="finalAlpha">The final alpha of the black fade</param>
+    /// <param name="fadeTime">How long the fade should take</param>
+    /// <returns></returns>
     private IEnumerator Fade(float finalAlpha, float fadeTime)
     {
         float currentFadeTime = 0f;
@@ -59,16 +74,29 @@ public class DeathScreen : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Fades in the screen
+    /// </summary>
+    /// <param name="fadeTime">How long fading in should take</param>
     public void FadeIn(float fadeTime)
     {
         Coroutine fadeIn = StartCoroutine(Fade(0, fadeTime));
     }
 
+    /// <summary>
+    /// Fades out the screen
+    /// </summary>
+    /// <param name="fadeTime">How long fading out should take</param>
     public void FadeOut(float fadeTime)
     {
         Coroutine fadeOut = StartCoroutine(Fade(1, fadeTime));
     }
 
+    /// <summary>
+    /// Coroutine that reveals the death screen
+    /// </summary>
+    /// <param name="fadeTime">How long fading in should take</param>
+    /// <returns></returns>
     private IEnumerator ShowDeathScreenRoutine(float fadeTime)
     {
         yield return StartCoroutine(Fade(1f, fadeTime));
@@ -78,11 +106,19 @@ public class DeathScreen : MonoBehaviour
         respawnScreen.alpha = 1f;
     }
 
+    /// <summary>
+    /// Shows the player's death screen
+    /// </summary>
     public void ShowDeathScreen()
     {
         Coroutine showDeathScreen = StartCoroutine(ShowDeathScreenRoutine(1f));
     }
 
+    /// <summary>
+    /// Coroutine that hides the death screen
+    /// </summary>
+    /// <param name="fadeTime">How long fading should take</param>
+    /// <returns></returns>
     private IEnumerator HideDeathScreenRoutine(float fadeTime)
     {
         respawnScreen.alpha = 0f;
@@ -92,26 +128,41 @@ public class DeathScreen : MonoBehaviour
         yield return StartCoroutine(Fade(0f, fadeTime));
     }
 
+    /// <summary>
+    /// Hides the death screen from the player
+    /// </summary>
     public void HideDeathScreen()
     {
         Coroutine hideDeathScreen = StartCoroutine(HideDeathScreenRoutine(1f));
     }
 
+    /// <summary>
+    /// Triggers when the player presses the respawn button
+    /// </summary>
     public void OnConfirmRespawn()
     {
         gameManager.Respawn();
     }
 
+    /// <summary>
+    /// Triggers when the player clicks the button to not respawn
+    /// </summary>
     public void OnCancelRespawn()
     {
         SwitchToConfirmScreen();
     }
 
+    /// <summary>
+    /// Triggers when the player affirms that they want to quit the game
+    /// </summary>
     public void OnConfirmQuit()
     {
         SceneManager.LoadScene("MainMenu");
     }
 
+    /// <summary>
+    /// Triggers when the player decides to not quit the game
+    /// </summary>
     public void OnCancelQuit()
     {
         SwitchToRespawnScreen();

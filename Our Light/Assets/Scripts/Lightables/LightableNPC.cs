@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Handles the lighting behavior for the bridge NPC
+/// </summary>
 public class LightableNPC : Lightable
 {
     [SerializeField] private LightMode unlockableMode;

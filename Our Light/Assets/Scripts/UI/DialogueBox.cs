@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine.UI;
 
+/// <summary>
+/// Handles behavior for the dialogue UI
+/// </summary>
 public class DialogueBox : MonoBehaviour
 {
     private CanvasGroup boxDisplay;
@@ -28,6 +31,11 @@ public class DialogueBox : MonoBehaviour
         dialogueIcon.SetActive(false);
     }
 
+    /// <summary>
+    /// Starts a dialogue interaction
+    /// </summary>
+    /// <param name="dialogueList">The list of dialogue lines to go through</param>
+    /// <param name="fromChild">True if the dialogue is coming from the child NPC, false otherwise</param>
     public void StartDialogue(string[] dialogueList, bool fromChild = false)
     {
         playerLight.TurnOffLight();
@@ -41,6 +49,9 @@ public class DialogueBox : MonoBehaviour
         NextDialogue();
     }
 
+    /// <summary>
+    /// Continues to the next piece of dialogue
+    /// </summary>
     public void NextDialogue()
     {
         if(dialogueQueue.Count == 0)
@@ -51,6 +62,9 @@ public class DialogueBox : MonoBehaviour
         dialogueText.text = dialogueQueue.Dequeue();
     }
 
+    /// <summary>
+    /// Ends the dialogue interaction
+    /// </summary>
     public void EndDialogue()
     {
         boxDisplay.alpha = 0f;

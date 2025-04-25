@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Handles the behavior for the lightable fog near the end of the level
+/// </summary>
 public class LightableFog : Lightable
 {
     [SerializeField] private Collider wall;

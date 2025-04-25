@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Handles behavior for dialogue triggers. Dialogue triggers can either be attatched to NPCs or can be independently placed in the environment.
+/// </summary>
 public class DialogueTrigger : MonoBehaviour
 {
     [SerializeField] private string[] dialogueList;

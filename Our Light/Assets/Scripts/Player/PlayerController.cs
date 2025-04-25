@@ -56,7 +56,6 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("Speed", 0f);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (characterController.isGrounded && playerVelocity.y < 0) playerVelocity.y = -2f;
@@ -79,11 +78,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Teleports the player to their current respawn point
+    /// </summary>
     public void RevivePlayer()
     {
         transform.position = FindFirstObjectByType<RespawnManager>().GetRespawnPoint();
     }
 
+    /// <summary>
+    /// Shows or hides the pause screen
+    /// </summary>
     private void OnReset()
     {
         if (!enabled && !pauseScreen.gameObject.activeSelf) return;

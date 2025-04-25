@@ -6,6 +6,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+/// <summary>
+/// Handles the behavior for the lightable bridges
+/// </summary>
 public class LightableBridge : Lightable
 {
     private List<GameObject> blocks;
@@ -22,7 +25,6 @@ public class LightableBridge : Lightable
     [SerializeField] private float crystalGlowIntensity;
     [SerializeField] private float bridgeRevealTime;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Awake()
     {
         base.Awake();
@@ -42,7 +44,11 @@ public class LightableBridge : Lightable
         currentIntensity = 1f;
     }
 
-    //TODO Rework to work with single mesh renderer
+    /// <summary>
+    /// Returns the mesh renderers for this bridge's crystals
+    /// </summary>
+    /// <param name="lightDetector"></param>
+    /// <returns></returns>
     private MeshRenderer[] GetCrystalRenderers(Collider lightDetector)
     {
         Transform crystalContainer = lightDetector.transform.GetChild(0);
@@ -61,9 +67,6 @@ public class LightableBridge : Lightable
         {
             if(playerLight.GetCurrentMode() == LightMode.BRIDGE)
             {
-                //audioSource.pitch = Random.Range(0.6f, 1f);
-                //audioSource.volume = startingVolume;
-                //audioSource.PlayOneShot(npcLightRevealSound);
                 PlaySound(npcLightRevealSound);
                 for (int i = 0; i < blocks.Count; i++)
                 {
@@ -71,9 +74,6 @@ public class LightableBridge : Lightable
                 }
             } else
             {
-                //audioSource.pitch = Random.Range(0.8f, 1.2f);
-                //audioSource.volume = startingVolume;
-                //audioSource.PlayOneShot(playerLightRevealSound);
                 PlaySound(playerLightRevealSound);
                 Coroutine revealBridge = StartCoroutine(ExpandBridge());
             }
@@ -91,6 +91,12 @@ public class LightableBridge : Lightable
         }
     }
 
+    /// <summary>
+    /// Scales a given block in the bridge from 0 to a given size
+    /// </summary>
+    /// <param name="block">The block to be scaled</param>
+    /// <param name="scale">The final scale the block should have</param>
+    /// <returns></returns>
     private IEnumerator ScaleBlock(GameObject block, Vector3 scale)
     {
         float currentScaleTime = 0f;
@@ -120,6 +126,13 @@ public class LightableBridge : Lightable
         fade = StartCoroutine(LerpLightIntensity(currentIntensity, 1, cameraZoomOutDuration));
     }
 
+    /// <summary>
+    /// Lerps the emissive intensity of the crystals attatched to this lightable bridge
+    /// </summary>
+    /// <param name="startingIntensity">The intiial emissive intensity of the crystals</param>
+    /// <param name="finalIntensity">The desired final intensity of the crystals</param>
+    /// <param name="finalGlowTime">How long the lerping should take</param>
+    /// <returns></returns>
     private IEnumerator LerpLightIntensity(float startingIntensity, float finalIntensity, float finalGlowTime)
     {
 
@@ -137,6 +150,10 @@ public class LightableBridge : Lightable
         }
     }
 
+    /// <summary>
+    /// Expands the light bridge out for when the player lights it
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator ExpandBridge()
     {
         revealable[0].GetComponent<MeshRenderer>().enabled = true;
@@ -163,11 +180,21 @@ public class LightableBridge : Lightable
         }
     }
 
+    /// <summary>
+    /// Determines the direction in which the light bridge should scale in when revealed
+    /// </summary>
+    /// <param name="currentScale">The bridge's current scale</param>
+    /// <param name="bridgeDirection">The direction of the bridge</param>
+    /// <returns>A float representing how much the bridge should scale in a certain direction</returns>
     private float CalculateScaleDirection(float currentScale, float bridgeDirection)
     {
         return currentScale * Convert.ToInt32(!Convert.ToBoolean(Math.Round(bridgeDirection, 5)));
     }
 
+    /// <summary>
+    /// Plays a given audio clip with randomized pitch
+    /// </summary>
+    /// <param name="sound">The clip to play</param>
     private void PlaySound(AudioClip sound)
     {
         audioSource.pitch = Random.Range(0.6f, 1f);
@@ -176,14 +203,17 @@ public class LightableBridge : Lightable
         StartCoroutine(FadeSound(sound));
     }
 
+    /// <summary>
+    /// Fades out a given audio clip
+    /// </summary>
+    /// <param name="sound">The clip to fade out</param>
+    /// <returns></returns>
     private IEnumerator FadeSound(AudioClip sound)
     {
-        //float halfwayPoint = sound.length / 2;
         float currentAudioTime = 0f;
         while(audioSource.volume != 0)
         {
             currentAudioTime += Time.deltaTime;
-            //if (currentAudioTime < halfwayPoint) yield return null;
             audioSource.volume = Mathf.Lerp(startingVolume, 0, currentAudioTime / sound.length);
             yield return null;
         }

@@ -102,6 +102,10 @@ public class PlayerLight : MonoBehaviour
         visualLight.enabled = isLightOn;
     }
 
+    /// <summary>
+    /// Switches the player's current light mode
+    /// </summary>
+    /// <param name="inputValue">The input provided by the player</param>
     private void OnSwitchMode(InputValue inputValue)
     {
         if (!enabled) return;
@@ -121,7 +125,6 @@ public class PlayerLight : MonoBehaviour
                 ambientLight.color = new Color(1f, 108f / 255f, 0f);
                 break;
         }
-        //Debug.Log(visualLight.color);
     }
 
     /// <summary>
@@ -155,7 +158,6 @@ public class PlayerLight : MonoBehaviour
             gameManager.KillPlayer();
         }
         lightUI.SetLightAmount(lightStacks);
-        Debug.Log("Light stack amount: " + lightStacks);
     }
 
     /// <summary>
@@ -165,7 +167,6 @@ public class PlayerLight : MonoBehaviour
     public void UnlockMode(LightMode unlockedMode)
     {
         unlockedModes.Add(unlockedMode);
-        //Debug.Log(unlockedModes);
     }
 
     /// <summary>

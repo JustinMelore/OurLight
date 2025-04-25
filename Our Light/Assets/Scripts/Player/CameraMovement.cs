@@ -32,6 +32,11 @@ public class CameraMovement : MonoBehaviour
         if (currentZoom != finalZoom) ZoomCamera();
     }
 
+    /// <summary>
+    /// Begins zooming the camera to a certain level
+    /// </summary>
+    /// <param name="zoomPercentage">How much the camera should zoom in or out</param>
+    /// <param name="zoomDuration">How long the zoom should take</param>
     public void StartCameraZoom(float zoomPercentage, float zoomDuration)
     {
         finalZoom = originalZoom * zoomPercentage;
@@ -40,6 +45,9 @@ public class CameraMovement : MonoBehaviour
         currentCameraZoomTime = 0f;
     }
 
+    /// <summary>
+    /// Helper method to adjust the camera's zoom over time
+    /// </summary>
     private void ZoomCamera()
     {
         if (playerCamera.orthographicSize == finalZoom)

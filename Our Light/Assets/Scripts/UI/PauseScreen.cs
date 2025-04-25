@@ -2,6 +2,10 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Handles the behavior for the player's pause screen
+/// </summary>
+
 public class PauseScreen : MonoBehaviour
 {
     [SerializeField] CanvasGroup canvasGroup;
@@ -22,6 +26,9 @@ public class PauseScreen : MonoBehaviour
         playerLight = FindFirstObjectByType<PlayerLight>();
     }
 
+    /// <summary>
+    /// Reveals the pause screen
+    /// </summary>
     public void ShowPauseScreen()
     {
         player.enabled = false;
@@ -32,6 +39,9 @@ public class PauseScreen : MonoBehaviour
         TogglePauseScreen();
     }
 
+    /// <summary>
+    /// Hides the pause screen
+    /// </summary>
     public void HidePauseScreen()
     {
         EventSystem.current.SetSelectedGameObject(null);
@@ -42,6 +52,9 @@ public class PauseScreen : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// Toggles the pause screen instead of the quit confirmation screen
+    /// </summary>
     public void TogglePauseScreen()
     {
         normalPauseScreen.SetActive(true);
@@ -49,6 +62,9 @@ public class PauseScreen : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(resumeButton);
     }
 
+    /// <summary>
+    /// Toggles the quit confirmation screen instead of the normal pause screen
+    /// </summary>
     public void ToggleQuitScreen()
     {
         normalPauseScreen.SetActive(false);
@@ -56,6 +72,9 @@ public class PauseScreen : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(cancelQuitButton);
     }
     
+    /// <summary>
+    /// Triggers when the player decides to quit the game
+    /// </summary>
     public void OnConfirmQuit()
     {
         SceneManager.LoadScene("MainMenu");

@@ -2,6 +2,9 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
+/// <summary>
+/// Handles behavior for the tutorial billboards placed throughout the level
+/// </summary>
 public class TutorialText : MonoBehaviour
 {
     private TextMeshPro text;
@@ -16,18 +19,21 @@ public class TutorialText : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Entered tutorial range");
         if (currentFade != null) StopCoroutine(currentFade);
         currentFade = StartCoroutine(FadeText(1f));
     }
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("Exited tutorial range");
         if (currentFade != null) StopCoroutine(currentFade);
         currentFade = StartCoroutine(FadeText(0f));
     }
 
+    /// <summary>
+    /// Fades the tutorials text to a given alpha
+    /// </summary>
+    /// <param name="newAlpha">The new alpha value of the tutorial text</param>
+    /// <returns></returns>
     private IEnumerator FadeText(float newAlpha)
     {
         float currentFadeTime = 0f;

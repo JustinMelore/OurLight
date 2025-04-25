@@ -3,6 +3,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Handles the behavior for the screen that shows up at the end of the game
+/// </summary>
 public class EndScreen : MonoBehaviour
 {
     private CanvasGroup[] badEndingText;
@@ -20,6 +23,9 @@ public class EndScreen : MonoBehaviour
         goodEndingText = transform.Find("GoodEnding").GetComponentsInChildren<CanvasGroup>();
     }
 
+    /// <summary>
+    /// Shows the end screen
+    /// </summary>
     public void ShowEndingScreen()
     {
         gameObject.SetActive(true);
@@ -27,6 +33,10 @@ public class EndScreen : MonoBehaviour
         StartCoroutine(ShowEndScreenCoroutine());
     }
 
+    /// <summary>
+    /// Coroutine that reveals the end screen
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator ShowEndScreenCoroutine()
     {
         yield return StartCoroutine(FadeInCanvasGroup(fade, fadeTime));
@@ -42,6 +52,12 @@ public class EndScreen : MonoBehaviour
         endButton.alpha = 1f;
     }
 
+    /// <summary>
+    /// Fades in a given canvas group object
+    /// </summary>
+    /// <param name="group">The canvas group being faded in</param>
+    /// <param name="neededFadeTime">How long the fade in should take</param>
+    /// <returns></returns>
     private IEnumerator FadeInCanvasGroup(CanvasGroup group, float neededFadeTime)
     {
         float currentFadeTime = 0f;
@@ -53,6 +69,9 @@ public class EndScreen : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Triggers when the player hits the continue button
+    /// </summary>
     public void OnContinue()
     {
         SceneManager.LoadScene("MainMenu");

@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Handles behavior for interactable NPCs that trigger dialogue when approaching the player. This script is now deprecated and has been replaced with DialogueTrigger.
+/// </summary>
 public class InteractableNPC : MonoBehaviour
 {
     [SerializeField] private string[] dialogueList;
