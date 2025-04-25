@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5328660331431605718}
   - component: {fileID: 3254612927554271087}
   - component: {fileID: 1460848762947596782}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DialogueTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,3 +97,4 @@ MonoBehaviour:
   dialogueList:
   - PLACEHOLDER TEXT
   requiredMode: 0
+  showIcon: 0

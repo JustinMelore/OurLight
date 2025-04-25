@@ -1,8 +1,10 @@
 using UnityEngine;
 
+/// <summary>
+/// Handles behavior for the lampposts that serve as checkpoints throughout the game
+/// </summary>
 public class Checkpoint : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     private RespawnManager respawnManager;
     private Vector3 respawnPoint;
     private PlayerLight playerLight;
@@ -38,7 +40,7 @@ public class Checkpoint : MonoBehaviour
 
     private void OnTriggerEnter(UnityEngine.Collider other)
     {
-        if (used) return;
+        if (used || other.gameObject.layer != 6) return;
         respawnManager.SetRespawnPoint(respawnPoint);
         respawnManager.ClearUnsavedLightables();
         playerLight.ResetLight();
